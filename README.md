@@ -1,5 +1,5 @@
 # DataScience
-Repo for DS Project 2.
+Repository for DS Project 2.
 Central Repository for all the work of Data Science Project 2. 
 You may find the necessary resources in the 'resources folder'.
 Please refer to the Project-List.pdf to find your group ID.
