@@ -1,6 +1,4 @@
-import cv2
 import numpy as np
-from matplotlib import pyplot as plt
 
 '''This function takes an imae as argument and calculates discrete 
 fourier transform'''
