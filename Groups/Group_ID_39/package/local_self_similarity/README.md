@@ -34,9 +34,9 @@ Calculate and returns the descriptors for all patch positions in the image.
   
 - Optional Parameters:
   
-  `patch_size`    : Size of the image patch (default and preffered: 5x5). 
+  `patch_size`    : Size of the image patch (default and preferred: 5x5). 
   
-  `cor_radius`    : Radius for image region centered at patch. (default and preffered: 40)
+  `cor_radius`    : Radius for image region centered at patch. (default and preferred: 40)
   
   `step`      : Incremental steps (default: 10)
   
@@ -57,31 +57,41 @@ Calculate and returns the descriptors for all patch positions in the image.
   
   Calculate single self-similarity descriptor for a certain patch center.
   
-  Syntax:
+  - Syntax:
   
-  ```
-  self_similarity_descriptor(img, yp, xp, cor_radius, patch_size, radius=4, perimeter=20)
-  ```
+    ```
+    self_similarity_descriptor(img, yp, xp, cor_radius, patch_size, radius=4, perimeter=20)
+    ```
   
-  Parameters:
+  - Parameters:
+    
+    `img`  : image
+    
+    `xp`  : center x-coordinate of the image patch
+    
+    `yp`  : center y-coordinate of the image patch
+    
+    `patch_size`  : Size of the image patch (preferred: 5x5). 
+    
+    `radius`  : Radial parts of the image region (default and preferred: 4)
+    
+    `parameter` : Angular divisions in the image patch (default and preferred: 4)
+    
+  - Return Type:
   
-  `img`  : image
-  
-  `xp`  : center x-coordinate of the image patch
-  
-  `yp`  : center y-coordinate of the image patch
-  
-  `patch_size`  : Size of the image patch (preffered: 5x5). 
-  
-  `radius`  : Radial parts of the image region (default and preffered: 4)
-  
-  `parameter` : Angular divisions in the image patch (default and preffered: 4)
-  
-  Return Type:
-  
-  1D Descriptor Array
+    1D Descriptor Array
 
 - `patch_ssd()` : 
   
   Calculate 'sum of squares difference'
-
+  
+  - Syntax:
+  
+    ```
+    patch_ssd(img, yp, xp, yc, xc, patch_size):
+    ```
+  
+  - Return Type:
+  
+    Integer
+  
