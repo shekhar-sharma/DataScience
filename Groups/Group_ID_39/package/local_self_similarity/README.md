@@ -57,13 +57,13 @@ Calculate and returns the descriptors for all patch positions in the image.
   
   Calculate single self-similarity descriptor for a certain patch center.
   
-  Syntax:
+  - Syntax:
   
     ```
     self_similarity_descriptor(img, yp, xp, cor_radius, patch_size, radius=4, perimeter=20)
     ```
   
-  Parameters:
+  - Parameters:
     
     `img`  : image
     
@@ -77,7 +77,7 @@ Calculate and returns the descriptors for all patch positions in the image.
     
     `parameter` : Angular divisions in the image patch (default and preferred: 4)
     
-  Return Type:
+  - Return Type:
   
     1D Descriptor Array
 
@@ -85,13 +85,13 @@ Calculate and returns the descriptors for all patch positions in the image.
   
   Calculate 'sum of squares difference'
   
-  Syntax:
+  - Syntax:
   
     ```
     patch_ssd(img, yp, xp, yc, xc, patch_size):
     ```
   
-  Return Type:
+  - Return Type:
   
     Integer
   
