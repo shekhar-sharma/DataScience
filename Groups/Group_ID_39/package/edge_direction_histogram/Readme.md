@@ -49,5 +49,5 @@ Calculate and returns 85 bins i.e is 80 local bins and 5 global bins.
     
   - Return Type:
   
-    1D Descriptor Array
+    1D Array containing 5 bins
 
