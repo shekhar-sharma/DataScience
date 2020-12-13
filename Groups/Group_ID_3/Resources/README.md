@@ -1,5 +1,5 @@
-<img src="dgcca_algo.png" />
-  ##Introduction
+<img src="Dgcca_algo.png" />
+Introduction
 
 Multiview Learning
 Multi-view learning refers to the technique of performing machine learning on data that is represented by multiple distinct feature sets called views. Data from real world applications is multiple viewed because it is often collected from different measuring methods and it describes information more minutely than single viewed data. Information from different views can be effectively utilized to gain performance improvements.
