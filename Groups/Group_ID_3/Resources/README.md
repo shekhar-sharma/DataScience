@@ -1,4 +1,4 @@
-<img src="Dgcca_algo.png" />
+
 Introduction
 
 Multiview Learning
@@ -22,3 +22,6 @@ Deep Generalized Canonical Correlation Analysis (DGCCA) is an extension of CCA t
 
 At train time - DGCCA passes each view to a different DNN and then back propagates the gradient of the GCCA objective to update the DNN parameters. This trains the DNNs to reduce the GCCA reconstruction error among their outputs.
 At test time -  New data is projected by feeding them through the learned DNN for each view.
+
+DGCCA Algorithm -
+<img src="Dgcca_algo.png" />
