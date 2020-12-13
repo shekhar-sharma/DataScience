@@ -1,5 +1,10 @@
+Prerequisites - 
+python 3.6+
+pytorch 1.0+
+cca-zoo 1.1.4 (https://pypi.org/project/cca-zoo/)
 
-Introduction
+The dgcca_pckg package implements Deep Generalized Canonical Correlation Analysis (DGCCA)
+The following sections give an over view
 
 Multiview Learning
 Multi-view learning refers to the technique of performing machine learning on data that is represented by multiple distinct feature sets called views. Data from real world applications is multiple viewed because it is often collected from different measuring methods and it describes information more minutely than single viewed data. Information from different views can be effectively utilized to gain performance improvements.
@@ -18,10 +23,10 @@ GCCA
 Generalized Canonical Correlation Analysis (GCCA) is an extension of CCA that can be applied to datasets with more than two views. It estimates pairwise correlations of multiple views. Its objective is to find a shared representation of different views.
 
 DGCCA
-Deep Generalized Canonical Correlation Analysis (DGCCA) is an extension of CCA that combines the advantages of DCCA & (MAXVAR) GCCA. It learns a shared representation from data with >2 views and simultaneously learns a DNN for each view in order to maximize the correlation between the learned representations.
+Deep Generalized Canonical Correlation Analysis (DGCCA) is an extension of CCA that combines the advantages of DCCA & GCCA. It learns a shared representation from data with >2 views and simultaneously learns a DNN for each view in order to maximize the correlation between the learned representations.
 
 At train time - DGCCA passes each view to a different DNN and then back propagates the gradient of the GCCA objective to update the DNN parameters. This trains the DNNs to reduce the GCCA reconstruction error among their outputs.
 At test time -  New data is projected by feeding them through the learned DNN for each view.
 
-DGCCA Algorithm -
+DGCCA Algorithm 
 <img src="Dgcca_algo.png" />
