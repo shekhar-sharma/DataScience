@@ -1,0 +1,10 @@
+Group Id: 32
+
+Group Member: Mehr Heer
+Enrolment Number: 0801CS171043
+
+Group Member: Prateek Narsinghani
+Enrolment Number: 0801CS171057
+
+Group Member: Yash Sonkiya
+Enrolment Number: 0801CS171094
