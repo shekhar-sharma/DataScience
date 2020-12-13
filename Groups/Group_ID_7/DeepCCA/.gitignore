@@ -1,0 +1,10 @@
+noisymnist_*
+__pycache__/
+.ipynb_*
+*.log
+*.model
+*.gz
+mfeats-mor
+mfeats-zer
+*.pdf
+.vscode/
