@@ -1,6 +1,4 @@
-import cv2
 import numpy as np
-# from google.colab.patches import cv2_imshow
 
 '''
 This method is used to get the KL-Transform of the image
@@ -22,17 +20,3 @@ def kl_transform(img):
   klt = np.dot(eigenVec, img)
  
   return klt, eigenVal, eigenVec
-
-
-
-'''
-Example
-img = cv2.imread('Lenna_(test_image).png', 0)
-klt, eigenVal, eigenVec = kl_transform(img)
-cv2_imshow((klt))
-
-# cv2_imshow(np.dot(klt.T,eigenVec[:100,:512]).T)
-cv2_imshow(np.dot(klt.T,eigenVec).T)
-cv2.waitKey(0)
-cv2.destroyAllWindows()
-'''
