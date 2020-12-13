@@ -15,7 +15,7 @@
 
 ## Regional()
 
-Calculate histogram of red, green and blue with masking dividing image into 5 parts top-left, bottom-left, top-right, bottom-right and center elliple.
+Calculate histogram of red, green and blue with masking and dividing image into 5 parts top-left, bottom-left, top-right, bottom-right and center elliple.
 
 - Syntax:
 
@@ -30,3 +30,24 @@ Calculate histogram of red, green and blue with masking dividing image into 5 pa
 - Return type:
   
   1D Array
+
+## Other Available Methods
+
+- `Global()`
+  
+  Calculate Histogram of red, green and blue without masking
+  
+  - Syntax:
+  
+    ```
+    Global(image)
+    ```
+  
+  - Parameters:
+    
+    `image`     : Image for which descriptors to be calculated. (use opencv or any other library to read image)
+    
+  - Return Type:
+  
+    1D Array
+
