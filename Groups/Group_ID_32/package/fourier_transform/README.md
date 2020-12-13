@@ -8,4 +8,5 @@ The following folder contains 4 files:
 This file contains the analysis and description of the core concepts of Feature extraction particularly Fourier Transform.
 ## Fourier_Transform.py:
 This file contains the implementation of Fourier Transform on any English alphabet. 
-
+## test.py:
+This file contains the sample code to use the above module. 
