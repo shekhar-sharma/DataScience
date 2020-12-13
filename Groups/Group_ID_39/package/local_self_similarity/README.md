@@ -14,7 +14,7 @@ lss.local_self_similarity(image)
 
 ## local_self_similarity()
 
-Calculate aand returns the descriptors for all patch positions in the image. 
+Calculate and returns the descriptors for all patch positions in the image. 
 
 - Syntax:
 
@@ -48,5 +48,40 @@ Calculate aand returns the descriptors for all patch positions in the image.
   
 - Return type:
   
-  2D Array
+  2D Descriptor Array
+
+
+## Other Available Methods
+
+- `self_similarity_descriptor()`
+  
+  Calculate single self-similarity descriptor for a certain patch center.
+  
+  Syntax:
+  
+  ```
+  self_similarity_descriptor(img, yp, xp, cor_radius, patch_size, radius=4, perimeter=20)
+  ```
+  
+  Parameters:
+  
+  `img`  : image
+  
+  `xp`  : center x-coordinate of the image patch
+  
+  `yp`  : center y-coordinate of the image patch
+  
+  `patch_size`  : Size of the image patch (preffered: 5x5). 
+  
+  `radius`  : Radial parts of the image region (default and preffered: 4)
+  
+  `parameter` : Angular divisions in the image patch (default and preffered: 4)
+  
+  Return Type:
+  
+  1D Descriptor Array
+
+- `patch_ssd()` : 
+  
+  Calculate 'sum of squares difference'
 
