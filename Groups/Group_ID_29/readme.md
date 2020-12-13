@@ -6,4 +6,4 @@
 
 Project Title: 
 1. Kernel Fisher Discriminant Analysis.
-2. Spase Multiview Fisher Discriminant Analysis.
+2. Sparse Multiview Fisher Discriminant Analysis.
