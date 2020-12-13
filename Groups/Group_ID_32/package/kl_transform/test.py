@@ -12,7 +12,6 @@ klt, eigenVal, eigenVec = kl_transform(img)
 #displaying the kl transformed image
 cv2.imshow("KL Transform",np.uint8(klt))
 
-# cv2_imshow(np.dot(klt.T,eigenVec[:100,:512]).T)
 #getting back the original image
 cv2.imshow("Retrieved Image ",np.uint8(np.dot(klt.T,eigenVec).T))
 cv2.waitKey(0)
