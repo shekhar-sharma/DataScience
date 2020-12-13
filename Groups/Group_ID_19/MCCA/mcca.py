@@ -1,3 +1,5 @@
+#MCCA (Multiview Canonical Correlation Analysis)
+
 import numpy as np 
 from scipy import linalg as lin 
 from sklearn.preprocessing import StandardScaler
@@ -57,7 +59,7 @@ class MCCA:
         views = len(X_list)
         x_normalize = [self.normalize(x) for x in X_list]
         C = cov_mat(x_normalize)
-        #C=add_reg_param(C)
+        C=add_reg_param(C)
         
         #Constructing A(left) and B(right) matrix of GEP(generalized eigen value problem) 
         A_rows = [np.hstack([np.zeros_like(C[i][j]) if i == j else C[i][j] for j in range(views)])for i in range(views)]
