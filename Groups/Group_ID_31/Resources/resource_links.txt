@@ -1,0 +1,4 @@
+For GrayScale Intensity:-
+https://www.researchgate.net/publication/224130500_Color_Image_to_Grayscale_Image_Conversion
+https://www.analyticsvidhya.com/blog/2015/01/basics-image-processing-feature-extraction-python/
+https://en.wikipedia.org/wiki/Grayscale
