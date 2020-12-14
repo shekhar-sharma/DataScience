@@ -1,4 +1,4 @@
- Resources :
+ Resources used :
 #1. Canonical Correlation Analysis (CCA) Based Multi-View Learning: An Overview -
 Chenfeng Guo and Dongrui Wu
 https://arxiv.org/abs/1907.01693
