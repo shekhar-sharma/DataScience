@@ -101,13 +101,6 @@ List containing transformed matrices .
 import torch
 import torch.nn as nn
 import numpy as np
-from torch.utils.data import BatchSampler, SequentialSampler
-try:
-   import cPickle as thepickle
-except ImportError:
-   import _pickle as thepickle
-import gzip
-import numpy as np
 torch.set_default_tensor_type(torch.DoubleTensor)
 
 from DeepCCA import DeepCCA , Model
