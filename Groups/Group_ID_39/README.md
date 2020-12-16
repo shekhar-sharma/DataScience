@@ -3,6 +3,11 @@
 ```
 Group_ID_39:
 |
+*---Documentation
+|   |---color_histogram_example_doc.md
+|   |---edge_direction_histogram_doc.md
+|   \---local_self_similarity_doc.md
+|
 *---Reports
 |   |---"Color Histogram - Report.pdf"
 |   |---"Edge direction Histgram - Report.pdf"
