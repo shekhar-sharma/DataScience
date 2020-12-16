@@ -1,0 +1,3 @@
+Local Self Similarity - https://www.researchgate.net/figure/Extracting-the-local-self-similarity-descriptor-a-at-an-image-pixel-b-at-a-video_fig2_221362526
+Edge Direction Histogram - https://onlinelibrary.wiley.com/doi/pdf/10.4218/etrij.02.0102.0103
+Color Histogram - https://en.wikipedia.org/wiki/Color_histogram
