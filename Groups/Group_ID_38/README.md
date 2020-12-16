@@ -35,7 +35,7 @@ reduced=l21cca.l21_cca(X,5,100)
 * 0801CS171025_Report.pdf - It contains report of the project.
 * test.py - It contains example code.
 * Documentation.html - It contains documentation of API.
-* 0801CS171025_PPT - It contains presentation of Project-1 and Project-2. 
+* 0801CS171025_PPT.pptx - It contains presentation of Project-1 and Project-2. 
 
 ## Author
 Gunjan Pandey
