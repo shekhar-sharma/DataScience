@@ -34,7 +34,7 @@ reduced=l21cca.l21_cca(X,5,100)
 * l21cca.py - It contains main code of the module.
 * 0801CS171025_Report.pdf - It contains report of the project.
 * test.py - It contains example code.
-* Documentation.html - It contains documentation of API.
+* Documentation of L21CCA.html - It contains documentation of API.
 * 0801CS171025_PPT.pptx - It contains presentation of Project-1 and Project-2.
 * README.md - It contains description of all the things.
 
