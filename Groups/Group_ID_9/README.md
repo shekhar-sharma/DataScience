@@ -2,9 +2,11 @@
 ## A New Locality Preserving CANONICAL CORRELATION ANALYSIS (ALPCCA)
 
 
+
 ## Group ID: 9
 ## Yashi Magre (0801CS171095)
 ## Sonal Dangi (0801CS171082)
+## Both parts of this project i.e. LPCCA and ALPCCA have been together done by Yashi Magre (0801CS171095) and Sonal Dangi (0801CS171082).Kindly Consider average marking.
 
 The following folder contains a detailed description and implementation of LPCCA on a multiview dataset in python.
 
