@@ -1,4 +1,5 @@
 ### Group ID: 32
+This package is developed by Prateek Narsinghani(0801CS171057) and Yash Sonkiya(0801CS171094).
 # Fourier Transform
 
 The following folder contains a detailed description and implementation of fourier transform in python.  
