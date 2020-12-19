@@ -29,7 +29,7 @@ model initialization
 
 
 *   **layer_sizes1** (_list_) – list of layer shape of view 1
-*   **layer_sizes2 **(_list_) – list of layer shape of view 1
+*   **layer_sizes2** (_list_) – list of layer shape of view 1
 *   **input_size1** (_int_) – input dimension of view 1
 *   **input_size2** (_int_) – input dimension of view 2
 *   **outdim_size** (_int_) – output dimension of data use_all_singular_values (bool, optional): specifies if all the singular values should get used to calculate the correlation or just the top outdim_size ones. Defaults to False.
@@ -58,7 +58,7 @@ initialize object
 *   **linearcca** (_bool, optional_) – apply linear cca on model output. Defaults to False.
 *   **device** (_[type], optional_) – [select device type GPU / CPU. Defaults to torch.device(‘cpu’).
 
-**fit**(_x1: numpy.array_, _x2: numpy.array_, _vx1: numpy.array = None_, _vx2: numpy.array = None_, _tx1: numpy.array = None_, _tx2: numpy.array = None_, _checkpoint: str = 'checkpoint.model'_)
+**fit**(_x1: torch.Tensor_, _x2: torch.Tensor_, _vx1: torch.Tensor = None_, _vx2: torch.Tensor = None_, _tx1: torch.Tensor = None_, _tx2: torch.Tensor = None_, _checkpoint: str = 'checkpoint.model'_)
 
 train model with the given dataset
 
@@ -74,7 +74,7 @@ train model with the given dataset
 *   **tx2** (_torch.Tensor, optional_) – testing data of view 2. Defaults to None.
 *   **checkpoint** (_str, optional_) – model weights saving location. Defaults to ‘checkpoint.model’.
 
-**transform**(_x1: numpy.array_, _x2: numpy.array_, _use_linear_cca: bool = False_) → list
+**transform**(_x1: torch.Tensor_, _x2: torch.Tensor_, _use_linear_cca: bool = False_) → list
 
 get output of the model
 
@@ -100,13 +100,6 @@ List containing transformed matrices .
 %autoreload 2
 import torch
 import torch.nn as nn
-import numpy as np
-from torch.utils.data import BatchSampler, SequentialSampler
-try:
-   import cPickle as thepickle
-except ImportError:
-   import _pickle as thepickle
-import gzip
 import numpy as np
 torch.set_default_tensor_type(torch.DoubleTensor)
 

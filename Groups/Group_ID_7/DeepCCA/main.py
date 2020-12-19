@@ -6,13 +6,6 @@ from torch.utils.data import BatchSampler, SequentialSampler, RandomSampler
 from . DeepCCAModels import Model
 import time
 import logging
-try:
-    import cPickle as thepickle
-except ImportError:
-    import _pickle as thepickle
-
-import numpy as np
-import torch.nn as nn
 torch.set_default_tensor_type(torch.DoubleTensor)
 
 
