@@ -1,4 +1,5 @@
 ## Group 32
+This package is developed by Prateek Narsinghani(0801CS171057) and Yash Sonkiya(0801CS171094).
 # Karhunen–Loève transform 
 The following folder contains a detailed description and implementation of KL Transform on a gray scale image in python.  
 The KL Transform is based on the statistical properties of the image and has several important properties that make it useful for image processing particularly for image compression. The main purpose of image compression is to store the image in fewer bits as compared to original image.  
