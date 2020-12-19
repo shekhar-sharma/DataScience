@@ -29,6 +29,8 @@ import l21cca
 X=[np.random.randn(10,10) for i in range(10)]
 
 reduced=l21cca.l21_cca(X,5,100)
+
+reduced
 ```
 ## File descriptions
 * l21cca.py - It contains main code of the module.
