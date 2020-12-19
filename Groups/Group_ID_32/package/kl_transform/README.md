@@ -10,3 +10,9 @@ This file contains the analysis and description of the core concepts of KL Trans
 this file contains the implementation of KL Transform in python on a gray scale image
 ## test.py
 this file contains an example how to perform Kl transform using above module 
+## KL_Transform_Code_Documentation.html:
+This file contains the detail description and documentation of the code in html format.
+## Lenna_(test_image).png:
+input image
+## output.jpg:
+output image
