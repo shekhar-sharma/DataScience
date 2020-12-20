@@ -57,7 +57,7 @@ descriptors of the training image and the test image. It was not the
 necessary part for our project, we simply added this for a better
 understanding of the working of the project.
 
-### 2) Code_Documentation.html file
+### 2) Code Documentation.html file
 This html file contains documentation of the code, also include the
 functions that are being used as well as the description about each code file
 used.
@@ -66,7 +66,7 @@ This html file contains an example, showing the process as well as the
 working of the project. It includes both the sift and resift implementation
 with an input image, processing and final output observed by applying both
 the algorithms one by one.
-### 4) Report SIFT_and_RESIFT.pdf
+### 4) Report on SIFT and RESIFT.pdf
 This pdf file contains the report on our project. It includes both the
 algorithms (sift and resift) in a single file. Each chapter first describes the
 sift algorithm followed by resift. In this way, all the topics used in our
