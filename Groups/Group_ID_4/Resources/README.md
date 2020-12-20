@@ -17,7 +17,7 @@ Jing Zhong, Ping Zhong, Yimin Xu, Lirang Yang. Robust multiview feature selectio
 ## Examples
 ```python
 >>> from RMvFS import RMvFS
->>> r = RMvFS(threshold=0.5)
+>>> r = RMvFS(threshold=0.3,max_iter=14)
 >>> X1 = [[60, 468], [40, 400], [46, 109], [50, 150], [12, 57]]
 >>> X2 = [[1, 1, 0, 0, 0], [1, 1, 1, 0, 0], [0, 0, 0, 1, 1], [1, 1, 0, 0, 0], [1, 0, 0, 1, 1]]
 >>> r.fit(X1,X2,Y=['ad', 'ad', 'notad', 'ad', 'notad'])
