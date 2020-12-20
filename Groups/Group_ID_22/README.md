@@ -1,8 +1,8 @@
 # LSCCA (Least Squares Canonical Correlation Analysis)
 
-Group ID: 22
-Sarvagna Shukla
-0801CS171067
+Group ID: 22<br>
+Sarvagna Shukla<br>
+0801CS171067<br>
 
 Canonical correlation analysis (CCA) is a well-known technique in multivariate statistical analysis to find maximally correlated projections between two data sets. CCA only leverages two views of the data, extending it to **more than two views** is achieved with **Least Squares based CCA (LS-CCA)**.
 
