@@ -1,3 +1,9 @@
+# For Understanding the functionality perfomed by each function refer to .ipynb file it has everything explained in detail 
+
+# Authors 
+# Kanishk Gupta(0801CS171031)
+# Aadeesh Jain (0801CS171001)
+# Harsh Pastaria(0801CS171027
 import numpy as np
 import pandas as pd
 import math
