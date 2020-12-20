@@ -13,14 +13,14 @@ class RMvFS:
     # N = total number of samples
     # c = total categories in classification task under supervised learning
 
-    def __init__(self, **kwargs):
+    def __init__(self, tolerance=0.01, max_iter=20, p=10, lam1=0.01, lam2=0.1, threshold=0.1):
         # tolerance,max_iter,p,lam1,lam2,threshold
-        self.epsilon = kwargs.get('tolerance', 0.001)    # tolerance
-        self.T = kwargs.get('max_iter', 20)             # max iterations
-        self.p = kwargs.get('p', 10)              # p > 1
-        self.lambda_1 = kwargs.get('lam1', 0.01)       # > 0
-        self.lambda_2 = kwargs.get('lam2', 0.1)       # > 0
-        self.threshold = kwargs.get('threshold', 0.1)
+        self.epsilon = tolerance    # tolerance
+        self.T = max_iter             # max iterations
+        self.p = p              # p > 1
+        self.lambda_1 = lam1       # > 0
+        self.lambda_2 = lam2       # > 0
+        self.threshold = threshold
 
         return None
 
@@ -108,7 +108,7 @@ class RMvFS:
         self.theta = [1/self.v for i in range(self.v)]
         self.c = self.Y.shape[1]
         self.W = np.array([[[1.0 for i in range(self.c)]
-                            for j in range(self.lv[k])] for k in range(self.v)])  # dim = (v x l x c)
+                            for j in range(self.lv[k])] for k in range(self.v)])  # dim = (v x lvk x c)
         self.E = np.array([[[1.0 for i in range(self.c)]
                             for j in range(self.N)] for k in range(self.v)])  # dim = (v x N x c)
         self.LAMBADA = self.E   # lagrange multiplier
@@ -149,7 +149,7 @@ class RMvFS:
                     D2v[j][j] = LA.norm(self.W[v])
 
                 D2[v] = D2v
-
+        
                 # updating projection matrix
                 self.W[v] = self.mu * np.matmul(
                                         LA.inv(
@@ -158,12 +158,13 @@ class RMvFS:
                                             + self.mu*np.matmul( self.X[v], self.X[v].transpose()) ),
                                         np.matmul(self.X[v], self.Y + self.E[v] - ((1/self.mu)*self.LAMBADA[v])))
 
+               
                 # calculating Gv
                 G[v] = np.matmul( self.X[v].transpose(), self.W[v] ) - self.Y + ( (1/self.mu)*self.LAMBADA[v] )
-
+               
                 # calculating slack variable Ev
                 param = (self.theta[v] ** self.p)/self.mu
-
+               
                 # as Ev and Gv are nothing but as same dimension as Y, i is row no
                 for i in range(self.N):
                     gvi = sum(G[v][i]**2)**(1/2) 
@@ -171,7 +172,7 @@ class RMvFS:
                         self.E[v][i] = (1 - (param/gvi)) * G[v][i]
                     else:
                         self.E[v][i] = 0  # row as 0 elements
-
+                
                 # update view weighted theta
                 for v in range(self.v):
                     l21norm = self.l21_normalization(self.E[v],self.N,self.c)
@@ -179,15 +180,15 @@ class RMvFS:
                         self.theta[v] = 0
                     else:
                         self.theta[v] = ((1/l21norm)**(1/(self.p-1)))/denom
-
+            
                 # UPDATE LAGRANGIAN multiplier matrix
                 self.LAMBADA[v] += self.mu*( np.matmul(self.X[v].transpose(), self.W[v])
                                              - self.Y - self.E[v]
                                             )
-
+                
             #updating penalty paramter
             self.mu = self.zeta*self.mu
-
+          
             # objective function calculation for t+1'th iteration
             obj_t1 = self.objective_fun_calc()
 
@@ -215,6 +216,10 @@ class RMvFS:
 
         mask = [True if el >= self.threshold else False for el in self.feature_importance]
         output = output.transpose()
-        output = output[mask]
+        try:
+            output = output[mask]
+        except IndexError:
+            print("input data is not of the same dimensions as given in fit method")
+            return None
                
         return output.transpose()
