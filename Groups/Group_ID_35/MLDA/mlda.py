@@ -92,7 +92,7 @@ class MLDA():
         Sty=Sty/n
         return Sty
 
-    def fit_transform(self,X,Y,row,col,n):
+    def fit(self,X,Y,row,col,n):
 
         Cxx=self.selfCovarianceX(X,n)
         Cyy=self.selfCovarianceY(Y,n)
