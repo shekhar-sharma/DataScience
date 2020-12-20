@@ -1,5 +1,7 @@
-Name: Farida Fakhri
+Name: Farida Fakhri                       Sparse CCA
 Enrollment Number: 0801CS171024
 
-Name: Nisreen Sabir
+Name: Nisreen Sabir                       Probabilistic CCA
 Enrollment Number: 0801CS171050
+
+Kindly consider individual marking.
