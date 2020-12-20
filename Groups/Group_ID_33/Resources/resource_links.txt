@@ -1,0 +1,7 @@
+=====HOG======
+https://www.analyticsvidhya.com/blog/2019/09/feature-engineering-images-introduction-hog-feature-descriptor/
+https://en.wikipedia.org/wiki/Histogram_of_oriented_gradients
+
+=====PHOG=====
+https://www.researchgate.net/publication/319234384_Pyramid_Histogram_of_Oriented_Gradients_based_Human_Ear_Identification_Pyramid_Histogram_of_Oriented_Gradients_based_Human_Ear_Identification
+
