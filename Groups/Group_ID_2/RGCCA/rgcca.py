@@ -30,7 +30,7 @@ class RGCCA:
         M = [d.T for d in data]
         D,F = len(data),[m.shape[0] for m in M] # F stores number of features in all datasets
         n_components = min([m.shape[1] for m in M])# stores minimum number of samples
-        cross_cov = [np.dot(a,b) for a in M for b in data] #C11,C12,...C21,C22,.. and so on
+        cross_cov = [n_components*np.dot(a,b) for a in M for b in data] #C11,C12,...C21,C22,.. and so on
         self.cov_mat = cross_cov
 
         left,right = np.zeros((sum(F),sum(F))), np.zeros((sum(F),sum(F)))
