@@ -18,7 +18,7 @@ class RCCA:
             M = [d.T for d in data]
             D,F = 2,[m.shape[0] for m in M] # F stores number of features in both datasets
             n_comp = min([m.shape[1] for m in M])# stores minimum number of samples
-            cross_cov = np.cov(M) #Sxx,Syx,Sxy,Syy
+            cross_cov = [n_comp*np.dot(a,b) for a in M for b in data] #Sxx,Syx,Sxy,Syy
             self.cross_cov = cross_cov
 
             #left = A, right = B for A*u = lambda*B*u <- generalized eigen problem
