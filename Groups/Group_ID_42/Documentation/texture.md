@@ -3,13 +3,17 @@
 ## Prerequisite
 
 numpy
+
 skimage.feature(greycomatrix,greycoprops)
+
 from skimage import io,color,img_as_ubyte
+
 
 
 ## Installation
 
 pip install numpy
+
 pip install skimage 
 
 ## Usage
