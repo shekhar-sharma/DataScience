@@ -1,0 +1,115 @@
+
+<html>
+    <head>
+    </head>
+    <body>
+        <h1><a id="user-content-rmvfs" class="anchor" aria-hidden="true" href="#rmvfs"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>RMvFS</h1><blockquote>
+            <p><em>class</em> <strong>RMvFS</strong>( <em>tolerance</em>=0.001, <em>max_iter</em>=20,  <em>p</em>=10, <em>lam1</em>=0.01, <em>lam2</em>=0.1,  <em>threshold</em>=0.01)</p>
+            </blockquote>
+            <p>  RMvFS Robust Multiview Feature Selection via View Weighted</p>
+            <table>
+            <thead>
+            <tr>
+            <th align="left"></th>
+            <th align="left"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+            <td align="left"><strong>Parameters:</strong></td>
+            <td align="left"><strong>tolerance : <em>float, (default: 0.001)</em></strong>  <br>  controls the conversion point of algorithm.Tolerable error amount. <br> <strong>max_iter: <em>int, (default: 20)</em></strong> <br>  no of iterations algorithm can take. <br> <strong>p: <em>int, (default: 10)</em></strong> <br>   exponent power of θv <strong>lam1: <em>float, (default: 0.01)</em></strong> <br>  controls the robustness by tuning on each view <br> <strong>lam2: <em>float, (default: 0.1)</em></strong> <br>  controls the robustness by tuning on each features from each view <br> <strong>threshold: <em>float, (default: 0.01)</em></strong> <br> threshold for features selection.</td>
+            </tr>
+            <tr>
+            <td align="left"><strong>Attributes:</strong></td>
+            <td align="left"><strong>v : <em>int</em></strong> <br>  total number of views passed <br> <strong>X : <em>array, [v, lv, N]</em></strong> <br>   3d matrix contains each views’ samples <br> <strong>Y: <em>array, [ N, c ]</em></strong> <br>  Sparse 2d matrix, has c columns and N rows, where c is no of classes and N is sample size. Contains 1 where there is label for particular sample else 0. <br> <strong>N : <em>int</em></strong> <br>   Total number of samples <br> <strong>lv: <em>array, [v]</em></strong> <br>  array of no of features of each view <br> <strong>theta: <em>array, [v]</em></strong> <br>  array of θv for each view, which controls the weight of each view <br> <strong>c: <em>int</em></strong> <br>   number of categories or classes which are unique in labels. <br> <strong>W: <em>array, [v, lv[i], c]</em></strong> <br>  3d matrix which keeps projection matrix of each view.<br> <strong>E: <em>array, [v, N, c]</em></strong> <br>  3d matrix, Lagrangian Slack variable for each view.<br> <strong>LAMBADA : <em>[v, N, c]</em></strong> <br>  3d matrix, Lagrangian Multiplier for each view <br> <strong>mu: <em>float</em></strong> <br>  a penalty parameter <br> <strong>zeta: <em>float</em></strong> <br>   ratio of increasing ‘mu’ with each iteration.<br><strong>feature_importance : <em>array, [lv[i] for each i in v]</em></strong> <br>   array of numerical values which tells the importance of any feature represented by the index of array.</td>
+            </tr>
+            </tbody>
+            </table>
+            <h2><a id="user-content-note" class="anchor" aria-hidden="true" href="#note"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Note</h2>
+            <p>For each view v, it finds the contribution of each view for the label given, that's here called <strong>view weightage</strong>. <br><br>
+            In also finds the projection matrix for each view which in turn give us <strong>feature importance</strong>.<br></p>
+            <h2><a id="user-content-references" class="anchor" aria-hidden="true" href="#references"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>References</h2>
+            <p>Jing Zhong, Ping Zhong, Yimin Xu, Lirang Yang. Robust multiview feature selection via view weighted. Multimedia Tools and Applications (2020).</p>
+            <h2><a id="user-content-examples" class="anchor" aria-hidden="true" href="#examples"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Examples</h2>
+            <pre><code class="language-python">
+&gt;&gt;&gt; from RMvFS import RMvFS
+&gt;&gt;&gt; r = RMvFS(threshold=0.5)
+&gt;&gt;&gt; X1 = [[60, 468], [40, 400], [46, 109], [50, 150], [12, 57]]
+&gt;&gt;&gt; X2 = [[1, 1, 0, 0, 0], [1, 1, 1, 0, 0], [0, 0, 0, 1, 1], [1, 1, 0, 0, 0], [1, 0, 0, 1, 1]]
+&gt;&gt;&gt; r.fit(X1,X2,Y=['ad', 'ad', 'notad', 'ad', 'notad'])
+&gt;&gt;&gt; print(r.feature_importance)
+[281.8059693176344, 113.03594264455542, 0.0, 0.0, 0.0, 0.0, 0.0]
+&gt;&gt;&gt; print(r.transform(X1,X2))
+[[ 60 468]
+[ 40 400]
+[ 46 109]
+[ 50 150]
+[ 12  57]]
+                </code></pre>
+            <h2><a id="user-content-methods" class="anchor" aria-hidden="true" href="#methods"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Methods</h2>
+            <table>
+            <thead>
+            <tr>
+            <th align="left"></th>
+            <th align="left"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+            <td align="left"><a href="#fit" title="RMvFS.fit"><strong>fit( X [,*Xn], Y)</strong></a></td>
+            <td align="left">fit data to model</td>
+            </tr>
+            <tr>
+            <td align="left"><a href="#transform" title="RMvFS.transform"><strong>transform( X [,*Xn] )</strong></a></td>
+            <td align="left">select the features based on the parameters derived from fit method and the threshold value given during the model object initialization.</td>
+            </tr>
+            </tbody>
+            </table>
+            <br>
+            <blockquote>
+            <p><strong>__init__</strong>(<em>tolerance</em>=0.001, <em>max_iter</em>=20,  <em>p</em>=10, <em>lam1</em>=0.01, <em>lam2</em>=0.1,  <em>threshold</em>=0.01)</p>
+            </blockquote>
+            <p>  Initialize self.</p>
+            <blockquote>
+            <p><a id="fit"></a><strong>fit</strong>( <em>X</em> [<em>, *Xn=None</em>], <em>Y</em> )</p>
+            </blockquote>
+            <p>  Fit Model to data and derives paramters/attributes like theta and W.</p>
+            <table>
+            <thead>
+            <tr>
+            <th align="left"></th>
+            <th align="left"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+            <td align="left"><strong>Parameters:</strong></td>
+            <td align="left"><strong>X: <em>array, [N,lv[i]]</em></strong> <br>   2d matrix, samples of all features of first view.<br> <strong>*Xn: <em>tuple, [v-1, N, lv[i]]</em></strong> <br>   Array of 2d matrics which are representation of different views. Can be empty.<br> <strong>Y:  <em>array, [N,c]</em></strong> <br> 2d matrix, array of labels for the samples.</td>
+            </tr>
+            </tbody>
+            </table>
+            <blockquote>
+            <p><a id="transform"></a><strong>transform</strong>( <em>X</em> [<em>, *Xn=None</em>] )</p>
+            </blockquote>
+            <p>  select the features based on the parameters derived from fit method and the threshold value given during the model object initialization.</p>
+            <table>
+            <thead>
+            <tr>
+            <th align="left"></th>
+            <th align="left"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+            <td align="left"><strong>Parameters:</strong></td>
+            <td align="left"><strong>X: <em>array, [N,lv[i]]</em></strong> <br>   2d matrix, samples of all features of first view.<br> <strong>*Xn: <em>tuple, [v-1, N, lv[i]]</em></strong> <br>   Array of 2d matrics which are representation of different views. Can be empty.</td>
+            </tr>
+            <tr>
+            <td align="left"><strong>Returns:</strong></td>
+            <td align="left"><strong>X_selected: <em>array, [v,N,lv[i]]</em></strong> <br>    3d array of selected features out of given feature matrices i.e. X and Xn.</td>
+            </tr>
+            </tbody>
+            </table>
+            
+    </body>
+</html>
