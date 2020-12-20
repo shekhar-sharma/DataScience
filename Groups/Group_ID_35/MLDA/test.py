@@ -20,7 +20,7 @@ if __name__ == '__main__':
         row,col=(n,n)
 
         Mlda = mlda.MLDA()
-        vTransforms = Mlda.fit_transform(X,Y,row,col,n)
+        vTransforms = Mlda.fit(X,Y,row,col,n)
         
         print("Wx -> ")
 
