@@ -13,3 +13,20 @@ Divyansh Joshi 0801CS171023 </br>
 ## SULDA
 
 
+## Example:
+`from sklearn import datasets`
+
+`import matplotlib.pyplot as plt`
+
+`import numpy as np`
+
+`from ulda import ULDA`
+
+Project the data onto the 2 primary linear discriminants
+
+**`ulda = ULDA(2)`**
+
+`ulda.fit(X, y)`
+
+`X_projected = ulda.transform(X)`
+
