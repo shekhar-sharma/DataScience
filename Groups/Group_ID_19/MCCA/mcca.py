@@ -9,86 +9,94 @@ class MCCA:
     def _init_(self,n_components=2,reg_param=0.01):
         self.n_components = n_components
         self.reg_param = reg_param
-        
-        self.views = 0 #number of views
+        self.dimen = []
         self.C = [[]]  #covariance matix 
-        self.w_list = []  # list of projections
-        self.score_list = []
-        self.sum_dimen = []
+        self.wieghts = [[]]  # list of projections
+      
         
     #To normalize data so that mean=0 and std dev=1
     def normalize(self,X):
         return StandardScaler().fit_transform(X)
     
-    #To find the covariance matrix containing
-    #both within view and between view covariance
-    def cov_mat(self,X_list):
+    #for calculating dimentions of each view
+    def dimentions(self,X_list)
+    dimen=[0]*views
+    for  i in range(views):
+        dimen[i]=X_list[i].shape[1]
+        self.dimen=dimen
+    
+    #for adding regularization parameter
+    def add_reg_param(self,c):
+        I = np.identity(c.shape[0])
+        R = np.dot(self.reg_param,I)
+        c = c+R
+        return c
+    #for calculating covariance matrix 
+    def cov_mat():
+    C = [[np.array([]) for i in range(views)] for j in range(views)]
+    for i in range(views):
+        for j in range(views):
+        C[i][j]=np.dot(X_list[i].T,X_list[j])
+        C[i][j]=np.divide(C[i][j],float(N))
+        if i==j:
+            C[i][j]=add_reg_param(C[i][j])
+    return C
+
+
+   def fit(self,X_list):
+    views = len(X_list)
+    #normalize the data
+    X_list = [self.normalize(x) for x in X_list]
+    
+    #create the initial alpha
+    alpha_initial = [np.array([[]]) for i in range(views)]
+    for k in range(views):
+        alpha_initial[k]=np.random.rand(self.dimen[k])
         
-        views = len(X_list)
-        X_list_stacked = np.vstack(X.T for X in X_list)
-        cov = np.cov(X_list_stacked)
-        
-        #dimention of views
-        dimen = [0]*views
-        for i in range(views):
-            dimen[i] = len(X_list[i].T)
-            
-        #sum of dimention till individual view
-        sum_dimen = [0]*(views+1)
-        for i in range(1,views):
-            sum_dimen[i] = sum([x for x in dimen][:i+1])
-        self.sum_dimen=sum_dimen
-            
-        #cov_mat containing both within view and between view covariance
-        C = [[np.array([]) for i in range(views)] for j in range(views)]
-        
-        #for calculating C11 C12...C21 C22 ....Cm1,Cm2....Cmm
-        for i in range(views):
+    #inialize alpha
+    alpha = [[np.array([]) for i in range(views)] for j in range(n_components)]
+    
+    #Horst Algorithm 
+    for i in range(n_components):
+        for j in range(views):
+            sum = np.zeros(dimen[j])
+            if i==0:
+                for k in range(views):
+                    sum = np.add(sum.T,np.dot(C[j][k],alpha_initial[k].T))
+            else:
+                for k in range(views):
+                    sum = np.add(sum.T,np.dot(C[j][k],alpha[i-1][k].T))
+            alpha[i][j]=sum
+            deno = (np.dot(alpha[i][j].T,alpha[i][j]))**(0.5)
+            alpha[i][j]=np.divide(alpha[i][j],float(deno))
+     
+    #calculating weights
+    weights = [[]]*views
+    for i in range(n_components):
+        if i==0:
             for j in range(views):
-                C[i][j] = cov[sum_dimen[i]:sum_dimen[i+1],sum_dimen[j]:sum_dimen[j+1]]
+                weights[j]=alpha[i][j]
+        else:
+            for j in range(views):
+                weights[j]=np.vstack([alpha[i][j],alpha[i-1][j]])
                 
-        return C
-    
-    def add_reg_param(self,C):
-        
+    self.weights=weights
+   
+   def transform(X_list):
+    views = len(X_list)
+    X_list = [self.normalize(x) for x in X_list]
+    X_reduced = [[]]*views
+    for i in range(views): 
         for i in range(views):
-            C[i][i] += self.reg_param * np.average(np.diag(cov_mat[i][i])) * np.eye(cov_mat[i][i].shape[0])
+            X_reduced[i]=np.dot(X_list[i],self.weights[i].T)
             
-        return C
-    
-    def fit(self,*X_list):
+    return X_reduced
         
-        views = len(X_list)
-        x_normalize = [self.normalize(x) for x in X_list]
-        C = self.cov_mat(x_normalize)
-        #C=add_reg_param(C)
-        
-        #Constructing A(left) and B(right) matrix of GEP(generalized eigen value problem) 
-        A_rows = [np.hstack([np.zeros_like(C[i][j]) if i == j else C[i][j] for j in range(views)])for i in range(views)]
-        A = np.vstack(A_rows)
-        B_rows = [np.hstack([np.zeros_like(C[i][j]) if i != j else C[i][j] for j in range(views)])for i in range(views)]
-        B = np.vstack(B_rows)
-        
-        #calculating eigen value and eigen vector 
-        eig_vals,eig_vecs = lin.eig(A,B)
-        w_list = [eig_vecs[start:end] for start, end in zip(self.sum_dimen[0:-1], self.sum_dimen[1:])]
-        self.w_list = w_list
-        self.views = views
-        self.C = C
-        
-    def transform(self,*X_list):
-        views = len(X_list)
-        X_normalize = [self.normalize(x) for x in X_list]
-        i=0
-        for X,W in zip(X_normalize,self.w_list):
-            score_list[i]=np.dot(X,W)
-            i=i+1
-        self.score_list=score_list
-        return score_list
                        
     def fit_transform(self,X_list):
         self.fit(X_list)
-        self.tranform(X_list)
+        X_reduced.self.tranform(X_list)
+        return X_reduced
                        
                        
 
