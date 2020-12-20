@@ -89,6 +89,8 @@ def l21_cca(R, d=1, neta=1, maxIter1=1, maxIter2=1):
             count+=1
             if count==d:
                 break
+        U=np.array(U)
+        U=U.T
         if converge(U,Uo):
             break
         Uo=U
