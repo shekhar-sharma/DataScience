@@ -1,7 +1,6 @@
 import numpy as np
 from scipy.linalg import eigh
-import math
-from sklearn import StandardScaler
+from sklearn.preprocessing import StandardScaler
 
 class RGCCA:
 
@@ -30,8 +29,8 @@ class RGCCA:
         data = [sc.fit_transform(d) for d in data]
         M = [d.T for d in data]
         D,F = len(data),[m.shape[0] for m in M] # F stores number of features in all datasets
-        n_comp = min([m.shape[1] for m in M])# stores minimum number of samples
-        cross_cov = np.cov(M) #C11,C12,...C21,C22,.. and so on
+        n_components = min([m.shape[1] for m in M])# stores minimum number of samples
+        cross_cov = [np.dot(a,b) for a in M for b in data] #C11,C12,...C21,C22,.. and so on
         self.cov_mat = cross_cov
 
         left,right = np.zeros((sum(F),sum(F))), np.zeros((sum(F),sum(F)))
@@ -45,10 +44,10 @@ class RGCCA:
         left = (left + left.T)/2 # converted to symmetric matrix
         right = (right + right.T)/2 # converted to symmetric matrix
         #calc GEvP
-        eigvals, eigvecs = self.calc_eigh(left, right)
-
+        eigvals, eigvecs = self.cal_eigh(left, right)
+        self.weights = []
         for i in range(D):
-            self.weights.append(eigvecs[sum(F[:i]):sum(F[:i+1]), :self.n_comp])
+            self.weights.append(eigvecs[sum(F[:i]):sum(F[:i+1]), :self.n_components])
         self.weights = [w.real for w in self.weights]
         self.c_comp = [np.dot(i[0],i[1]) for i in zip(data,self.weights)] #canonical components
             
