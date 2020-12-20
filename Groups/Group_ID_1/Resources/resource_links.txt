@@ -1,0 +1,7 @@
+1.	Canonical sparse cross-view correlation analysis
+            https://sci-hub.se/10.1016/j.neucom.2016.01.053
+2.	https://www.sciencedirect.com/science/article/abs/pii/S0031320309001964
+
+3.	https://www.researchgate.net/publication/228631619_SLEP_Sparse_Learning_with_Efficient_Projections/link/0046351a36ba9d0adf000000/download
+
+4.	https://archive.ics.uci.edu/ml/machine-learning-databases/mfeat/
