@@ -1,10 +1,12 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
+
 """
 Created on Fri Dec 10 00:29:25 2020
 
 @author: sashbros
 """
+
 #imported all libraries
 import numpy as np
 from numpy import linalg as la
@@ -16,8 +18,13 @@ import pandas as pd
 class LSCCA:
     
     # constructor
-    def __init__(self, views):
+    def __init__(self, views=2, scale=True):
         self.views = views
+        self.scale = scale
+        self.min_cols = 99999
+        self.W = []
+        self.rmat = [[]]
+        self.tmat = [[]]
     
     # normalizing the data for all M views
     def normalize(self, M):
@@ -40,47 +47,47 @@ class LSCCA:
     def fit(self, M):
         
         # knowing minimum features(columns) in all M views
-        min_cols = 99999
         for i in range(self.views):
-            if M[i].shape[1] < min_cols:
-                min_cols = M[i].shape[1]
+            if M[i].shape[1] < self.min_cols:
+                self.min_cols = M[i].shape[1]
         
-        M = self.reduce_dimensions(M, min_cols)
+        M = self.reduce_dimensions(M, self.min_cols)
         
-        M = self.normalize(M)
+        if (self.scale == True):
+            M = self.normalize(M)
         
         # R matrix will have all the covariance matrices stored
-        rmat = [[0 for _ in range(self.views)] for _ in range(self.views)]
+        self.rmat = [[0 for _ in range(self.views)] for _ in range(self.views)]
         
         for i in range(self.views):
             for j in range(self.views):
-                rmat[i][j] = (1/(self.views-1)) * np.dot(np.transpose(M[i]), M[j]) # 1/(M-1) is the formula where M = views
+                self.rmat[i][j] = (1/(self.views-1)) * np.dot(np.transpose(M[i]), M[j]) # 1/(M-1) is the formula where M = views
         
         # W list will have all the weight matrices stored
-        W = [0 for _ in range(self.views)]
+        self.W = [0 for _ in range(self.views)]
         
         for i in range(self.views):
-            W[i] = rmat[i][i]
+            self.W[i] = self.rmat[i][i]
             
             # W[i] = rmat[i][i]**(-0.5)
         
         for i in range(self.views-1):
             for j in range(i+1, self.views):
                 # T matrix is the matrix on which we have to perform the SVD
-                tmat = np.dot(rmat[i][i], rmat[i][j])
-                tmat = np.dot(tmat, rmat[j][j])
+                self.tmat = np.dot(self.rmat[i][i], self.rmat[i][j])
+                self.tmat = np.dot(self.tmat, self.rmat[j][j])
                 
                 # tmat = np.dot(rmat[i][i]**(-0.5), rmat[i][j])
                 # tmat = np.dot(tmat, rmat[j][j]**(-0.5))
                 
-                u, s, vh = la.svd(tmat)
+                u, s, vh = la.svd(self.tmat)
                 
                 # computing and updating the weight matrices
             
-                W[i] = np.dot(W[i], u)
-                W[j] = np.dot(W[j], vh.transpose())
+                self.W[i] = np.dot(self.W[i], u)
+                self.W[j] = np.dot(self.W[j], vh.transpose())
 
-        return W # returning the List of all weight matrices
+        return self.W # returning the List of all weight matrices
         
 
 # Declaring and Initializing all M views
@@ -94,8 +101,8 @@ M.append(m1)
 M.append(m2)
 M.append(m3)
 
-# Calling the constructor of LSCCA and generating all the weight matrices W
-lscca = LSCCA(3) # 3 is the number of views
+# Making an object by calling the constructor of LSCCA, and generating all the weight matrices W
+lscca = LSCCA(3, True)
 W = lscca.fit(M)
 
 # Printing all the weight matrices
@@ -104,5 +111,3 @@ for i in W:
     print("w" + str(count) + ":")
     print(i, end="\n\n")
     count+=1
-    
-    
