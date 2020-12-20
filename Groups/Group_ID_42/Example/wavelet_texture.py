@@ -25,7 +25,6 @@ def asm_feature(matrix_coocurrence):
 	return "ASM = ", asm
 
 # Load image
-
 img=io.imread('/wavelet_texture/imgg.jpeg')
 gray = color.rgb2gray(img)
 image = img_as_ubyte(gray)
