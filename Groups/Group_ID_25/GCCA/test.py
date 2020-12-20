@@ -9,7 +9,7 @@ def generat_data(range_val = 100):
 
 def main():
 
-    # create data in advance
+    #create data in advance
     a,b = generat_data()
     print(a)
     print(b)
