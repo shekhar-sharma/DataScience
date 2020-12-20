@@ -1,7 +1,7 @@
 Prerequisites - 
-python 3.6+
-pytorch 1.0+
-cca-zoo 1.1.4 (https://pypi.org/project/cca-zoo/)
+*python 3.6+
+*pytorch 1.0+
+*cca-zoo 1.1.4 (https://pypi.org/project/cca-zoo/)
 
 The dgcca_pckg package implements Deep Generalized Canonical Correlation Analysis (DGCCA)
 The following sections give an over view
@@ -28,5 +28,6 @@ Deep Generalized Canonical Correlation Analysis (DGCCA) is an extension of CCA t
 At train time - DGCCA passes each view to a different DNN and then back propagates the gradient of the GCCA objective to update the DNN parameters. This trains the DNNs to reduce the GCCA reconstruction error among their outputs.
 At test time -  New data is projected by feeding them through the learned DNN for each view.
 
+<img src="Dgcca_algorithm.png" />
 DGCCA Algorithm 
 <img src="Dgcca_algo.png" />
