@@ -82,16 +82,13 @@ class GCCA:
         #print(np.shape(v))
 #         wx=np.dot(np.lib.scimath.sqrt(Vxx**(-1)),u)
 #         wy=np.dot(np.lib.scimath.sqrt(Vyy**(-1)),v.T)
+
+        #the implementation of complex equation of GCCA will be implemented here with the use of manopt package and with the use of    
+        #specific cost function, i am unable to find any another approach and algorithm related to SUMCoRR GCCCA so to standardized this I implemented function for only 2 view set 
         
         print(Vxx)
         print(Vyy)
         print(Vxy)
-
-        #calculating generalized eigenvalue problem ( A*u = (lambda)*B*u )")
-
-
-        # calc GEV
-        #igvals, eigvecs = self.solve_eigprob(left, right)
 
         # substitute local variables for member variables
         self.view_len = view_len
