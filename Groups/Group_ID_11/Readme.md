@@ -1,4 +1,4 @@
-# Sparse Uncoorelated Linear Discriminant Analysis (Group No: 11)
+# Sparse Uncorrelated Linear Discriminant Analysis (Group No: 11)
 
 ## Group Members: 
 
