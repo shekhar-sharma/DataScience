@@ -22,7 +22,7 @@ Divyansh Joshi 0801CS171023 </br>
 
 `from ulda import ULDA`
 
-Project the data onto the 2 primary linear discriminants
+<!--- Project the data onto the 2 primary linear discriminants --->
 
 **`ulda = ULDA(2)`**
 
