@@ -9,12 +9,6 @@ from keras.regularizers import l1
 
 import numpy as np
 
-import scipy.stats
-import matplotlib.pyplot as plt
-
-import os
-import shutil
-
 def cca_loss(y_true,y_pred):
     return -1*y_pred
 
@@ -24,7 +18,7 @@ class UnitNormWithNonneg(Constraint):
         self.nonneg = nonneg
         self.axis = axis
 
-    def __call__(self, p):
+    def __call__(self, p): #p is weight
         p = p / (K.epsilon() + K.sqrt(K.sum(K.square(p), axis=self.axis, keepdims=True)))
         if self.nonneg:
             p *= K.cast(p >= 0., K.floatx())
@@ -36,6 +30,7 @@ class UnitNormWithNonneg(Constraint):
                 'nonneg': self.nonneg,
                 'axis': self.axis}
 
+## Matrix Deflation
 def deflate_inputs(current_inputs, original_inputs, u, v):
     Xp      = current_inputs[0][0,:,:]
     Yp      = current_inputs[1][0,:,:]
@@ -56,7 +51,7 @@ def deflate_inputs(current_inputs, original_inputs, u, v):
     return new_current_inputs
 
 def build_scca_model(params):
-    dense_vecs  = 1
+    dense_vecs  = 1 
     
     # X projection model
     modelX = Sequential()
@@ -81,11 +76,10 @@ def build_scca_model(params):
 
 def fit(current_inputs, params):
 
-    orig_inputs = [current_inputs[0][0,:,:].copy(), current_inputs[1][0,:,:].copy()] # save for deflate
+    orig_inputs = [current_inputs[0][0,:,:].copy(), current_inputs[1][0,:,:].copy()] 
         
     model_loss  = cca_loss
-    outputs     = np.array([[[0.]]])
-
+    outputs     = np.array([[[0.]]]) 
     u_comp = []
     v_comp = []
     for i in range(params['nvecs']):
@@ -95,21 +89,11 @@ def fit(current_inputs, params):
         print(model)
 
         # compile model
-        cbacks = []
-        if params['save_best'] is True:
-            mc = ModelCheckpoint(filepath='tmp_save.h5',monitor='loss')
-            cbacks.append(mc)
         model.compile(optimizer=params['algo'], loss=model_loss)
 
         # fit model
         model.fit(current_inputs, outputs, epochs=params['its'],
                 verbose=params['keras_verbose'])
-        # load back checkpoint weights
-        if params['save_best'] is True:
-            try:
-                model.load('tmp_save.h5')
-            except:
-                pass
 
         # extract weights and add to component list
         _u_comp     = model.layers[2].get_weights()[0]
@@ -133,9 +117,8 @@ def transform(orig_inputs, u_comp, v_comp):
     
     return (x_proj, y_proj)
 
-def scca(inmats, nvecs, sparsity=(1e-5,1e-5), its=500,
-                algo='nadam', verbose=0, nonneg=False,
-                save_best=True):
+def fit_transform(inmats, nvecs, sparsity=(1e-5,1e-5), its=500,
+                algo='nadam', verbose=0, nonneg=False):
     # Arguments
     # inmats : A tuple or list (dataset1, dataset2) of shape (N, features)
     # nvecs : The number of dimensions to project onto
@@ -169,14 +152,12 @@ def scca(inmats, nvecs, sparsity=(1e-5,1e-5), its=500,
     params['sparsity_Y']    = sparsity[1]
     params['algo']          = algo
     params['its']           = its
-    params['keras_verbose'] = max(0,verbose)
+    params['keras_verbose'] = max(0,verbose)  # print info 0 means dont print
     params['nonneg']        = nonneg
     params['nvecs']         = nvecs
-    params['save_best']     = save_best
 
     # FIT MODEL 
     (u_comp, v_comp) = fit(current_inputs=current_inputs, params=params)
     (x_proj, y_proj) = transform(orig_inputs, u_comp, v_comp)
 
     return (u_comp, v_comp), (x_proj, y_proj)
-
