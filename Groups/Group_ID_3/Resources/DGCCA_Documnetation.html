@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Deep Generalized Cannonical Correlation Analysis Implementaion</title>
+</head>
+<body>
+  
+  <style type="text/css"> 
+
+    #root{
+      width: 90%;
+      font-family :  "Georgia";
+      overflow : auto;
+      margin: auto;
+      padding: 10px;
+      color : #130f40;
+      background-color: #dff9fb;
+      float:left;
+      width: 75%;
+      padding: 10px;
+    }
+
+    #head{
+      background-color: #130f40;
+      color : white;
+      padding: 10px;
+      font-size: 20px;
+      width: 100%;
+      border: none;
+      outline: none;;
+      align-self: center;
+    }
+    body, html {background-color: #dff9fb}
+
+    #code{ 
+      background-color: #ffffff;
+      align-self: center;
+      padding: 10px;
+      display: inline-block;
+      border-left: 3px solid  #130f40;
+    }
+
+    #right{ 
+      border-right: 3px solid  #130f40;
+      border-bottom: 3px solid  #130f40;
+      background-color: #ffffff;
+      align-self: center;
+      width: 15%;
+      display: block;
+      float: left;
+      padding: 10px;
+      overflow-x: hidden;
+      /*overflow-y: scroll;*/
+      height: 200vh;
+    }
+
+  </style>
+
+  <div id ="head" align=center class="column2">      <H1> <B> Deep Generalized Cannonical Correlation Analysis Implementaion for 3 Views </B> </H1> <H3>(Under Development)</H3>
+  </div>
+
+  <div id="right"><a href="https://github.com/shekhar-sharma/DataScience/tree/main/Groups/Group_ID_3/Resources" >  Link to Example File  </a>
+  </div>
+
+  <div id="root">
+
+    <div align=center>   
+     <H1> <B> Package Name : dgcca_pckg </B> </H1> <span style="float: right"> <a href="https://github.com/shekhar-sharma/DataScience/tree/main/Groups/Group_ID_3/Resources" >  [Source]  </a></span>
+     <div id=code> dgcca_pckg.DCGGA</div>
+   </div>
+
+   <div>
+    Prerequisites 
+    <ul><li> <span>python 3.6+</span></li>
+      <li><span>pytorch 1.0+</span></li></li>
+      <li><span><a href="https://pypi.org/project/cca-zoo/">cca-zoo 1.1.4 </a></span></li></ul>
+    </div>
+
+    <hr>
+    
+    <div>
+     <H1> <u> Classes in DGCCA.py file - </u> </H1>
+     <H2> Class DNN : Creates a new Deep Neural Network </H2>
+     <div id=code> dgcca_pckg.DCGGA.DNN</div>
+     <h3> Parameters : </h3> 
+     <ul> <li> <span> <b> layer_size</b> - It is the list of size of each layer in the DNN staring from the input layer </span> </li>
+       <li> <span> activation - The type of activation function to be used. Choose from 'relu' , 'tanh' , 'sigmoid' . By default, sigmoid. </span> </li> </ul>
+       <h3>Methods : </h3> 
+       <ul><li><div id="code"> forward(self, l)</b> : forward propogates input l into the DNN and returns the output </div></li></ul>
+       <hr width=50%>
+       <H2> Class : DGCCA_architecture - Defines the architecture for three DNNs </H2>
+       <div id=code> dgcca_pckg.DCGGA.DGCCA_architecture</div>
+       <h3> Parameters : </h3> 
+       <ul> <li> <span> <b>layer_size1 , layer_size2 , layer_size3</b> : list of sizes of each layer of first, second and third DNN(view) respectively. </span> </li> </ul>
+       <h3> Methods : </h3>
+       <ul> <li> <span> <b>forward(self, x1, x2, x3) </b> : forward propogates x1 into the first DNN,x2 into the second DNN and x3 into the third DNN and returns the outputs.</span></li>
+       </ul>
+       <hr width=50%>
+       <H2>Class DGCCA : Implements the DGCCA Algorithm</H2>
+       <div id=code> dgcca_pckg.DCGGA.DGCCA</div>
+       <h3> Parameters : </h3> 
+       <ul>  <li> <span> <b> architecture</b> : object of DGCCA_architecture class. </span></li>
+        <li> <span><b>gcca_wrraper</b>: from cca-zoo package to implement gcca </span></li>
+        <li> <span><b>learning_rate</b>: learning_rate of the network </span></li>
+        <li> <span><b>epoch_num :</b>How long to train the model.</span></li>
+        <li> <span><b>batch_size :</b> Number of example per minibatch. </span></li>
+        <li> <span><b>reg_param : </b> the regularization parameter of the network </span></li>
+        <li> <span><b>out_size :</b> the size of the new space learned by the model (number of the new features)</span></li> 
+      </ul>
+      <h3> Methods : </h3>
+      <ul> <li> <span> <b> (self, train_x1, train_x2, train_x3, test_x1, test_x2, test_x3) </b>- trains and tests the networks batch-wise. Also, back propogates the ggca loss. First three parameters are the training set for each view respectively. The last three parameters are the testing set for each view respectively. </span></li>
+        <li> <span><b>_get_outputs(self, x1, x2, x3)</b> - returns gcca loss and output as both lists for given inputs x1, x2, x3 for view first, second, third respectively. </span></li>
+        <li> <span><b> test(self, x1, x2, x3) </b> - returns gcca loss mean and output as list for given inputs x1, x2, x3 for view first, second, third respectively.  </span></li>
+        <li> <span><b> train_gcca(self, x1, x2, x3) </b>- uses the gcca.fit() from cca zoo on given inputs x1,x2,x3 </span></li></ul>
+      </div>
+      <hr>
+    </div>
+    </body>
+    </html>
