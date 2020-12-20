@@ -3,12 +3,14 @@
 ## Prerequisite
 
 matplotlib
+
 pywt 
 
 
 ## Installation
 
 pip install matplotlib
+
 pip install PyWavelets
 
 ## Usage
