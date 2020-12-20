@@ -11,6 +11,7 @@ klt, eigenVal, eigenVec = kl_transform(img)
 
 #displaying the kl transformed image
 cv2.imshow("KL Transform",np.uint8(klt))
+cv2.imwrite("output.jpg",np.uint8(klt)) #saving the image
 
 #getting back the original image
 cv2.imshow("Retrieved Image ",np.uint8(np.dot(klt.T,eigenVec).T))
