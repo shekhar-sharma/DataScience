@@ -47,8 +47,5 @@ def lbp(photo):
  
   return lbp_photo
 
-l=lbp(photo)
 
-plt.imshow(l, cmap ="gray") 
-plt.show()
 
