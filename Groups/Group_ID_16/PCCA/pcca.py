@@ -1,15 +1,5 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# In[1]:
-
-
 import numpy as np
 inv = np.linalg.inv
-
-
-# In[2]:
-
 
 def expectation_maximize(params):
   Psi = params['Psi']
@@ -46,9 +36,6 @@ def expectation_maximize(params):
   params['Psi'] = Psi_new
 
 
-# In[3]:
-
-
 def fit(params):
   Psi = params['Psi']
   iters = params['iters']
@@ -58,9 +45,6 @@ def fit(params):
     expectation_maximize(params)
     Psi = params['Psi']
     np.linalg.cholesky(Psi)
-
-
-# In[4]:
 
 
 def transform(params):
@@ -77,15 +61,9 @@ def transform(params):
   return Z.T
 
 
-# In[5]:
-
-
 def fit_transform(params):
   fit(params)
   return transform(params)
-
-
-# In[6]:
 
 
 def get_projections(params, n_samples):
@@ -107,10 +85,6 @@ def get_projections(params, n_samples):
     X[i] = np.random.multivariate_normal(X_mean[:, i], Psi)
 
   return X[:, :p1], X[:, p1:]
-
-
-# In[7]:
-
 
 def pcca(inmats, nvecs, iters = 500, nprojs = 100):
   # arguments
@@ -163,10 +137,4 @@ def pcca(inmats, nvecs, iters = 500, nprojs = 100):
   Z = fit_transform(params)
   X1, X2 = get_projections(params, nprojs)
   return Z,X1,X2
-
-
-# In[ ]:
-
-
-
 
