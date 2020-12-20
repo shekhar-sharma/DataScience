@@ -32,7 +32,7 @@ pip install opencv-contrib-python <br><br>
 You also need to add the correct image path if you are running on local machine.
 
 ## This folder contains:
-### 1) Code files Folder
+### 1) Code_files Folder
 This Folder contains all the files related to our project.
 #### 1.1) SIFT and reSIFT Implementation file
 This jupyter notebook in which all the code is being merged to
@@ -57,7 +57,7 @@ descriptors of the training image and the test image. It was not the
 necessary part for our project, we simply added this for a better
 understanding of the working of the project.
 
-### 2) Code Documentation.html file
+### 2) Code_Documentation.html file
 This html file contains documentation of the code, also include the
 functions that are being used as well as the description about each code file
 used.
