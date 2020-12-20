@@ -42,7 +42,7 @@ Jing Zhong, Ping Zhong, Yimin Xu, Lirang Yang. Robust multiview feature selectio
 
 &emsp; Initialize self.
 
-> <a name="#fit"></a>__fit__( _X_ [_, \*Xn=None_], _Y_ )
+> <a id="fit"></a>__fit__( _X_ [_, \*Xn=None_], _Y_ )
 
 &emsp; Fit Model to data and derives paramters/attributes like theta and W.
 
@@ -50,7 +50,7 @@ Jing Zhong, Ping Zhong, Yimin Xu, Lirang Yang. Robust multiview feature selectio
 |:---|:--|
 |__Parameters:__| __X: *array, [N,lv[i]]*__ <br/> &emsp; 2d matrix, samples of all features of first view.<br/> __\*Xn: *tuple, [v-1, N, lv[i]]*__ <br/> &emsp; Array of 2d matrics which are representation of different views. Can be empty.<br/> __Y:  *array, [N,c]*__ <br/>&emsp;2d matrix, array of labels for the samples.|
 
-> <a name="#transform"></a>__transform__( _X_ [_, \*Xn=None_] )
+> <a id="transform"></a>__transform__( _X_ [_, \*Xn=None_] )
 
 &emsp; select the features based on the parameters derived from fit method and the threshold value given during the model object initialization.
 
