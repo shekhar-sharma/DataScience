@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<head>
+	<title>LapMCCA</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+	<!-- jQuery library -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+	<!-- Popper JS -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+	<!-- Latest compiled JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+	
+	<body>
+		<div class="container pt-3 pb-3 border">
+
+			<div class="container bg-info text-white p-3">
+				<h2>Laplacian Multiset Canonical Correlation Analysis (LapMCCA)</h2>
+			</div>
+			<hr>
+			<div class="container bg-light text-dark p-3">
+				class LapMCCA(n_components=2,p_neighbors=3,reg=0.001)
+				<a href="https://github.com/shekhar-sharma/DataScience/blob/main/Groups/Group_ID_19/LapMCCA/LapMCCA.py">[Source]</a>
+			</div>
+			<hr>
+			<div>
+				<p>LapMCC algorithm can discover the nonlinear correlation information of the input spaces by combining local linear sub-problems together.</p>
+				<p>It is an extension to the multiview canonical correlation analysis (MCCA).</p>
+			</div>
+			<hr>
+			<div>
+				<h2>Parameters:</h2>
+				<b>n_components:</b> int, (default=2)
+				<p>number of components to keep.</p>
+				<b>p_neighbors:</b> int, (default=3)
+				<p>number of nearest neighbor in the graph of the same class.</p>
+				<b>reg:</b> float, (default=0.001)
+				<p>regularization parameter.</p>
+			</div>
+			<hr>
+			<div>
+				<h2>Attributes:</h2>
+				<p>m -> number of views</p>
+				<p>d -> number of samples in that view</p>
+				<p>n -> number of dimensions in each view</p>
+
+				<b>W:</b> array,[m,n,n]
+				<p>Weight matrix for the p nearest neighbour graph.</p>
+				<b>D_w_view:</b> array,[m,m]
+				<p>Diagonal matrix for the created from W.</p>
+				<b>L_w_view:</b> array,[m,m]
+				<p>Matrix given by L = D - W.</p>
+				<b>S_w_view:</b> array,[m,m]
+				<p>Within-view covariance matrix.</p>
+				<b>Wij:</b> array,[m,m]
+				<p>Weight matrix for the i and j view.</p>
+				<b>Dij:</b> array,[m,m]
+				<p>Diagonal matrix for the created from Wij</p>
+				<b>Lij:</b> array,[m,m]
+				<p>Matrix given by Lij = Dij - Wij</p>
+				<b>Sij:</b> array,[m,m]
+				<p>Between-view covariance matrix</p>	
+				<hr>		
+				<div>
+					<b>Note:</b>
+					<p>The X given as input to above methods contains m view vectors where the number of sample (row) in each view can vary but the number of dimensions i.e. n (coloum) needs to be same for every view.And the label contain m rows for each view and n number of labels in its coloum each for a dimension i.e. n.</p>
+				</div>
+			</div>
+			<hr>
+			<div>
+				<h2>References:</h2>
+				<p>1. The Laplacian Multiset Canonical Correlation analysis model is made from: Yun-Hao Yuan1,2 & Yun Li 1 & Xiao-Bo Shen3,4 and Quan-Sen Sun3 & Jin-Long Yang2 - Laplacian multiset canonical correlations for multiview feature extraction and image recognition.</p>
+				<p>2. The Horst algorithm applied to find projection is taken from: Jan Rupnik (1), John Shawe-Taylor (2) - Multi-View Canonical Correlation Analysis.</p>
+			</div>
+			<hr>
+			<div>
+				<h2>Methods:</h2>
+
+				<p><b>1.fit(X,label)</b></p>
+				<p>fit model to data</p>
+				<p><b>Parameter:</b><p>
+				<p><b>X:</b> array, [m,m]
+				<p>Contain m number of training vectors</p>
+				<p><b>label:</b> array, [m,n]</p>
+				<p>Contains label for the view to create p neighbour affinity graph<p></p>
+				<p><b>Returns:</b>
+				<p><b>alpha:</b> array, [m,m]</p>
+				<p>which is the m projection direction with h coloums</p>
+
+				<p><b>2.fit_transform(X,label)</b></p>
+				<p>fit model to data and transform the training vectors.</p>
+				<p><b>Parameter:</b></p>
+				<p><b>X:</b>array, [m,m]</p>
+				<p>Contain m number of training vectors</p>
+				<p><b>label:</b>array, [m,n]</p>
+				<p>Contains label for the view to create p neighbour affinity graph</p>
+				<p><b>Returns:</b></p>
+				<p><b>Xnew: </b>array, [m,m]</p>
+				<p>which is the transformed training vectors.</p>
+
+			</div>
+			<hr>
+			<div>
+				<h2>Examples:</h2>
+				<div class="container bg-light text-dark p-3">
+					<pre>from LapMCCA import LapMCCA
+import numpy as np
+lapmcca=LapMCCA(3,2)</pre>
+				</div>
+				<p> </p>
+				<div class="container bg-light text-dark p-3">
+					<pre>a = np.array([[-1, -4, 3,3], [-25, -1,4,40], [-33, -24,23,34], [1, 1,45,23], [23, 1,1,34], [3, 24,34,25]])
+b = np.array([[-1, -1,2,3], [-2,2, -1,-3], [-3,4, -2,0], [1,2, 1,8], [2,3, 1,5], [3, 4,2,3],[0,1, 0,7]])
+c = np.array([[-1, -1,3,2], [-2, 3,-1,5], [-3, 4,-2,7], [1, 1,3,1], [2, 1,3,4], [3,4, 2,6],[0,2, 0,0],[2,4,7,90]])
+X=np.array([a,b,c])
+label=np.array([[1,1,2,2], [0,0,1,1], [0,1,1,0]])
+alpha=lapmcca.fit(X,label)
+print(alpha)</pre>
+				</div>
+				<div>
+					<pre>[array([[-0.01561364, -0.00715853, -0.00371508],
+       [ 0.7574964 ,  0.70260264,  0.67785604],
+       [ 0.24013272,  0.2186611 ,  0.20918661],
+       [-0.38654606, -0.39437102, -0.39608273],
+       [ 0.46528832,  0.53906063,  0.56688016],
+       [-0.0487916 , -0.11122388, -0.13602827]]), array([[ 0.0881417 ,  0.08907191,  0.08934236],
+       [-0.14611885, -0.16432588, -0.16983177],
+       [ 0.22894995,  0.20232519,  0.19417741],
+       [ 0.62436283,  0.62695782,  0.62760979],
+       [ 0.36003482,  0.3597421 ,  0.3595827 ],
+       [ 0.09567409,  0.09252639,  0.09155561],
+       [ 0.62438346,  0.62695782,  0.62760979]]), array([[ 3.29137510e-02,  3.48696749e-02,  3.48942044e-02],
+       [ 7.95483348e-02,  7.74633053e-02,  7.74372900e-02],
+       [ 1.13693222e-01,  1.10578309e-01,  1.10539360e-01],
+       [-4.08174729e-04,  5.84890427e-04,  5.97378042e-04],
+       [ 2.20852947e-02,  2.30514865e-02,  2.30636769e-02],
+       [ 3.41538040e-02,  3.31150037e-02,  3.31020703e-02],
+       [ 4.17442135e-04, -5.84890372e-04, -5.97378042e-04],
+       [ 9.88942878e-01,  9.89407561e-01,  9.89413218e-01]])]</pre>
+				</div>
+				<div class="container bg-light text-dark p-3">
+					<pre>Xnew=lapmcca.fit_transform(X,label)
+print(Xnew)</pre>
+				</div>
+				<div>
+					<pre>[array([[-14.56685842,  -8.09799568, -11.94407199,  42.92116644],
+       [-12.21325993,  -8.64681804, -13.89268248,  41.3965418 ],
+       [-11.25249811,  -8.8535114 , -14.65168555,  40.72393103]]), array([[ 1.20273605,  3.7973419 ,  1.07507433, 12.19982949],
+       [ 1.27591253,  3.69447281,  1.12193465, 12.25482673],
+       [ 1.29679821,  3.66468515,  1.13531013, 12.26951993]]), array([[ 1.59681536,  4.76454974,  6.85777861, 90.56309784],
+       [ 1.60338933,  4.75225453,  6.86910635, 90.56933107],
+       [ 1.60347142,  4.75210086,  6.869248  , 90.56940535]])]</pre>
+				</div>
+			</div>			
+		</div>
+	</body>
+</head>
