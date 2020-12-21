@@ -11,8 +11,8 @@ import rgcca
 ## Parameters:
 
 **data:** list of n views of training datasets  
-&ensp;&ensp;&ensp;&ensp;&ensp;X<sub>1</sub> is 1<sup>st</sup> view of shape (4,5)  
-&ensp;&ensp;&ensp;&ensp;&ensp;X<sub>2</sub> is 2<sup>nd</sup> view of shape (4,6)  
+&ensp;&ensp;&ensp;&ensp;&ensp;X<sub>1</sub> is 1<sup>st</sup> view of shape (r<sub>1</sub>,c<sub>1</sub>)  
+&ensp;&ensp;&ensp;&ensp;&ensp;X<sub>2</sub> is 2<sup>nd</sup> view of shape (r<sub>2</sub>,c<sub>2</sub>)  
 &ensp;&ensp;&ensp;&ensp;&ensp;... so on
 
 ## Methods:
