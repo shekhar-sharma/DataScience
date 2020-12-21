@@ -25,8 +25,8 @@ Note 2: All the images present in the coil-20_32x32 folder needs to be in the sa
 ## Usage
 
 ```python
-import crmvfe
-crmvfe.CRMvFE(input_data, number_of_views, number_of_objects)
+import CRMVFE
+CRMVFE.crmvfe(input_data, number_of_views, number_of_objects)
 ```
 
 ## Example
