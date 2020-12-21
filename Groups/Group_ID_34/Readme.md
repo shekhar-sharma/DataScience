@@ -62,7 +62,7 @@ pip install DCCAE_repo
 
 The folder contains the following:
 
-### DCCA.ipynb:
+### dcca.ipynb:
 
 This file contains the implementation of Deep Canonical Correlation Analysis using pytorch.
 
@@ -82,7 +82,7 @@ To Run:
 ```
 -----------------------------------------------------------------------------------------------------------------------------
 
-### Deep Canonically Correlated Autoencoders / DCCAE.ipynb:
+### Deep Canonically Correlated Autoencoders / dccae.ipynb:
 
 Contains code on Deep Canonically Correlated Autoencoders (DCCAE), implementation of DCCAE and corresponding documentation. 
 
@@ -90,7 +90,7 @@ It contains the following dependencies from torch and configuration libraries: n
 
 -----------------------------------------------------------------------------------
 
-### Configuration.ipynb:
+### configuration.ipynb:
 
 The main difference between running linear models and deep learning based models is the Config class from configuration.py.
 
@@ -101,7 +101,7 @@ Config() holds default settings such that all model architectures will work out.
 
 -------------------------------------------------------------------------------
 
-### DeepWrapper.ipynb:
+### deepwrapper.ipynb:
 
 It contains the fit and transform functions for Deep Canonical Correlation Analysis based on DCCA.
 
