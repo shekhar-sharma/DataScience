@@ -16,7 +16,11 @@ from sklearn.preprocessing import StandardScaler
 &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp; returns RCCA object with weight matrices (w<sub>x</sub> and w<sub>y</sub>) and correlation between variates
   
 **transform(data):** scales the data using Standard Scaler of sklearn.preprocessing  
-&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp; returns the dot product of standardized data which are returned by fit method 
+&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp; returns the dot product of standardized data which are returned by fit method
+
+**fit_transform(self,data):** To get the combined result of fit and transform method as reduced data.  
+Parameters:  
+&emsp;&emsp; data: datasets in the form of list of length 2.
 
 ## Example:
 ```
