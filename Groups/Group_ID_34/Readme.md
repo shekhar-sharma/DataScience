@@ -49,12 +49,12 @@ tensorflow==1.12 and Keras==2.2.4
 
 ------------------------------------------------------
 
-
 ### Installation:
 
 Install $DCCAE_repo by running:
-
+```
 pip install DCCAE_repo
+```
 
 -------------------------------------------------
 
@@ -70,16 +70,16 @@ It contains the following dependencies from torch, configuration, and objective 
 matmul, optim, nn, functional
 
 To Run:
-
+```
    import DCCAE_repo
    cfg = Config()
    
-   train_set_1 and train_set_2 are 2 numpy arrays with the same number of samples but potentially different numbers of features
+   #train_set_1 and train_set_2 are 2 numpy arrays with the same number of samples but potentially different numbers of features
    
    dcca = DCCAE_repo.deepwrapper.DeepWrapper(cfg)
    
    dcca.fit(train_set_1, train_set_2)
-   
+```
 -----------------------------------------------------------------------------------------------------------------------------
 
 ### Deep Canonically Correlated Autoencoders / DCCAE.ipynb:
