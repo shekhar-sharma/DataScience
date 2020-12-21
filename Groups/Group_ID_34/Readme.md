@@ -62,7 +62,7 @@ pip install DCCAE_repo
 
 The folder contains the following:
 
-### DCCA.ipynb
+### DCCA.ipynb:
 
 This file contains the implementation of Deep Canonical Correlation Analysis using pytorch.
 
@@ -101,30 +101,31 @@ Config() holds default settings such that all model architectures will work out.
 
 -------------------------------------------------------------------------------
 
-### DeepWrapper.ipynb
+### DeepWrapper.ipynb:
 
 It contains the fit and transform functions for Deep Canonical Correlation Analysis based on DCCA.
 
 -------------------------------------------------------------------------------
 
-### __init__.ipynb
+### __init__.ipynb:
+
 This file contains curated dependencies that are pervasive in this project.
 
 ----------------------------------------------------------------------------
 
-### objectives.ipynb
+### objectives.ipynb:
 
 This file contains classes and methods for optimization test of DCCAE
 
 -------------------------------------------------------------------------------
 
-### test_deepwrapper.ipynb
+### test_deepwrapper.ipynb:
 
 This contains methods for testing the DCCA and the DCCAE models using Testcase from unittest, in conformation with config file.
 
 --------------------------------------------------------------------
 
-### Deep CCA Auto-encoders Report
+### Deep CCA Auto-encoders.pdf (Report):
 
 This file contains the analysis and description of the core concepts of multiview learning primarily focusing on Deep canonical correlation analysis and Deep CCA Auto-encoders. It contains detailed working, algorithm and explaination of concepts related to DCCA, disDCCA, DCCAE, disDCCAE. 
 
