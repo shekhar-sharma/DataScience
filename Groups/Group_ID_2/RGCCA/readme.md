@@ -1,4 +1,4 @@
-# Regularized Generalized Canonical Correlation Analysis (RCCA)
+# Regularized Generalized Canonical Correlation Analysis (RGCCA)
 
 ## Package Name: RGCCA
 ```
