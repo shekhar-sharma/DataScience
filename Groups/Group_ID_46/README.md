@@ -4,9 +4,10 @@
 
 The purpose of this study is to extract and analyse pixel and edge features of an image.
 
-<b>Software and Libraries:</b>
+This project is collectively done by Kshitij Gour and Sanchit Bhat. Kindly consider for Average Marking.
 
-- Python 2.7 or higher
+<b>Libraries used:</b>
+
 - NumPy
 - Matplotlib
 - OpenCV2
