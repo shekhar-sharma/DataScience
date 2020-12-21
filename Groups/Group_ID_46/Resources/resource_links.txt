@@ -1,0 +1,8 @@
+For Prewitt Edge Features:
+https://www.analyticsvidhya.com/blog/2019/08/3-techniques-extract-features-from-image-data-machine-learning-python/?#
+https://www.mygreatlearning.com/blog/feature-extraction-in-image-processing/
+
+For Canny Edge Detection:
+http://fourier.eng.hmc.edu/e161/lectures/canny/node1.html
+https://automaticaddison.com/how-the-canny-edge-detector-works/
+https://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_imgproc/py_canny/py_canny.html#canny
