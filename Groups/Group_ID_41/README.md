@@ -20,13 +20,13 @@ Download crmvfe.py file from this repo and place it in the folder where your cod
 
 Note 1: One needs to update the number of views and objects in the CRMvFE.py file also.
 
-Note 2: All the images present in the coil-20 folder needs to be in the same folder as CRMvFE.py and test.py files.
+Note 2: All the images present in the coil-20_32x32 folder needs to be in the same folder as CRMvFE.py and test.py files.
 
 ## Usage
 
 ```python
 import crmvfe
-crmvfe.CRMvFE(arguments)
+crmvfe.CRMvFE(input_data, number_of_views, number_of_objects)
 ```
 
 ## Example
