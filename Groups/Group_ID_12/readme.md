@@ -1,4 +1,5 @@
-Project Name : Discriminative Extended Canonical Correlation Analysis
-Contributer 
-Kuldeep Sharma
-0801CS171036
+## Group ID: 12
+## Discriminated Extended Canonical Correlation Analysis (DE-CCA)
+
+## Contributor
+### Kuldeep Sharma(0801CS171036)
