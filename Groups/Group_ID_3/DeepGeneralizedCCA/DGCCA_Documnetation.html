@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Deep Generalized Cannonical Correlation Analysis Implementaion</title>
+</head>
+<body>
+  
+  <style type="text/css"> 
+
+    #root{
+      width: 90%;
+      font-family :  "Georgia";
+      overflow : auto;
+      margin: auto;
+      padding: 10px;
+      color : #130f40;
+      background-color: #dff9fb;
+      float:left;
+      width: 75%;
+      padding: 10px;
+    }
+
+    #head{
+      background-color: #130f40;
+      color : white;
+      padding: 10px;
+      font-size: 20px;
+      width: 100%;
+      border: none;
+      outline: none;;
+      align-self: center;
+    }
+    body, html {background-color: #dff9fb}
+
+    #code{ 
+      background-color: #ffffff;
+      align-self: center;
+      padding: 10px;
+      display: inline-block;
+      border-left: 3px solid  #130f40;
+    }
+
+    #right{ 
+      border-right: 3px solid  #130f40;
+      border-bottom: 3px solid  #130f40;
+      background-color: #ffffff;
+      align-self: center;
+      width: 15%;
+      display: block;
+      float: left;
+      padding: 10px;
+      overflow-x: hidden;
+      /*overflow-y: scroll;*/
+      height: 90vh;
+       color : #130f40;
+    }
+
+  </style>
+
+  <div id ="head" align=center class="column2"> <H1> <B> Deep Generalized Cannonical Correlation Analysis Implementaion for 3 Views </B> </H1>  </div>
+
+  <div id="right">
+  <br> <h3> Contents </h3>
+  <ol> <li> Classes in DGCCA.py file</li> <li> Class DNN </li> <li> Class DGCCA_architecture</li>
+  <li> Class DGCCA </li><li>Example Using Random Data</li></ol><br><hr><br>
+  <ul><li><a href="https://github.com/shekhar-sharma/DataScience/tree/main/Groups/Group_ID_3/DeepGeneralizedCCA/dgcca_exampe.ipynb" >  Link to DGCCA Example File  </a></li> <br>
+  <li><a href="https://github.com/shekhar-sharma/DataScience/tree/main/Groups/Group_ID_3" >  Link to Complete GitHub Repository </a></li></ul>
+  </div>
+
+  <div id="root">
+
+    <div align=center>   
+     <H1> <B> Package Name : DeepGeneralizedCCA </B> </H1> <span style="float: right"> <a href="https://github.com/shekhar-sharma/DataScience/blob/main/Groups/Group_ID_3/DeepGeneralizedCCA/dgcca.py" >  [Source]  </a></span>
+     <div id=code> DeepGeneralizedCCA.dgcca.py</div>
+   </div>
+
+   <div>
+    <h3> Prerequisites </h3> 
+    <ul><li> <span>python 3.6+</span></li>
+      <li><span>pytorch 1.0+</span></li>
+      <li><span>NumPy 1.19+</span></li>
+      <li><span><a href="https://pypi.org/project/cca-zoo/">cca-zoo 1.1.4 </a>   (Used for the implementation of GCCA)</span></li></ul>
+    </div>
+
+    <hr>
+    
+    <div>
+     <H1> <u> Classes in dgcca.py file - </u> </H1>
+     
+
+     <H2> Class DNN : Creates a new Deep Neural Network</H2> 
+     <div id=code> DeepGeneralizedCCA.dgcca.DNN(nn.Module) : (self, layer_size, activation)</div>
+     
+     <h3> Parameters : </h3> 
+     <ul> <li> <span> <b>  layer_size: list  </b> <br> list of size of each layer in the DNN staring from the input layer</span></li><br>
+       <li> <span> <b> activation  : str, default  : sigmoid </b>  <br> The type of activation function to be used. Choose from 'relu' , 'tanh' , 'sigmoid' . </span> </li> </ul>
+      
+      <h3>Methods : </h3> 
+       <div id="code"> forward(self, l) </div> <br> forward propogates input tensor into the DNN and returns the output tensor (overriden)<br><br><b>Parameters</b><ul><li><b>l : </b>torch.Tensor (input to DNN) </li></ul><b>Returns - </b> torch.Tensor (output of DNN)</div>
+       <hr width=50%>
+       
+
+       <H2> Class : DGCCA_architecture : Defines the architecture for 3 DNNs </H2>
+       <div id=code> DeepGeneralizedCCA.dgcca.DGCCA_architecture(nn.Module) : (self, layer_size1, layer_size2, layer_size3, activation)</div>
+       
+       <h3> Parameters : </h3> 
+       <ul> <li> <b> layer_size1 : list</b><br>list of sizes of each layer of first DNN from input to output layer. </li> <li><br> <b> layer_size2 : list</b><br>list of sizes of each layer of second DNN from input to output layer. </li><br><li> <b> layer_size3 : list</b><br>list of sizes of each layer of third DNN from input to output layer. </li></ul>
+       
+       <h3> Methods : </h3>
+       <div id=code>forward(self, x1, x2, x3) </div><br> forward propogates x1 into the first DNN,  x2 into the second DNN and x3 into the third DNN and returns the outputs. (overriden)<br><br><b>Parameters</b><ul><li><b>x1 : </b>torch.Tensor (input to first DNN) </li> <li><b>x2 : </b>torch.Tensor (input to second DNN) </li> <li><b>x3 : </b>torch.Tensor (input to third DNN) </li></ul><b>Returns - </b> torch.Tensor,torch.Tensor,torch.Tensor (output of first, second and third DNN)
+       <hr width=50%>
+       
+
+       <H2>Class DGCCA : Implements the DGCCA Algorithm</H2>
+       <div id=code> DeepGeneralizedCCA.dgcca.DGCCA(nn.Module) : (self, architecture, learning_rate, epoch_num, batch_size, reg_par, out_size:int)</div>
+       
+       <h3> Parameters : </h3> 
+       <ul>  <li> <span> <b> architecture</b> : DGCCA_architecture <br> object of DGCCA_architecture class to define structure of the 3 DNNs. </span></li><br>
+        <li> <span><b>learning_rate</b>: float<br>learning rate of the network </span></li><br>
+        <li> <span><b>epoch_num : int</b><br>How long to train the model (no of iterations to train the model)</span></li></br>
+        <li> <span><b>batch_size : int</b><br> Number of examples per minibatch. </span></li><br>
+        <li> <span><b>reg_par : float </b><br> the regularization parameter of the networks </span></li><br> 
+        <li> <span><b>out_size : int</b><br> the size of the new space learned by the model (number of the new features)</span></li> 
+      </ul>
+      
+      <h3> Methods : </h3> 
+      <div id=code> fit_transform(self, train_x1, train_x2, train_x3, test_x1, test_x2, test_x3) </div><br>Learn and apply the dimension reduction on the train data batch-wise. Trains the networks in mini-batches. Back propogates the ggca loss to tune network acc to data.  Each view needs to have the same number of features as its corresponding view in the training data.
+      <br><br><b>Parameters</b><ul><li><b>train_x1 : </b>torch.Tensor (Training set for first view) </li> <li><b>train_x2 : </b>torch.Tensor (Training set for second view) </li><li><b>train_x3 : </b>torch.Tensor (Training set for third view) </li> <li><b>test_x1 : </b>torch.Tensor (Testing set for first view) </li> <li><b>test_x2 : </b>torch.Tensor (Testing set for second view) </li><li><b>test_x3 : </b>torch.Tensor (Testing set for third view) </li></ul>
+
+      <div id=code> predict(self, x1, x2, x3)</b></div> <br> returns gcca loss and output for each of the three views <br><br><b>Parameters</b><ul><li><b>x1 : </b>torch.Tensor (Input for first view) </li> <li><b>x2 : </b>torch.Tensor (Input for second view) </li> <li><b>x3 : </b>torch.Tensor (Input for third view) </li></ul><b>Returns - </b> float, list (loss and list of outputs for each of the three views) <br><br>
+      
+      <div id=code>test(self, x1, x2, x3)</div> <br>  returns gcca loss mean and output for each of the three views.<br><br><b>Parameters</b><ul><li><b>x1 : </b>torch.Tensor (Input for first view) </li> <li><b>x2 : </b>torch.Tensor (Input for second view) </li> <li><b>x3 : </b>torch.Tensor (Input for third view) </li></ul><b>Returns </b>- float, list (mean of loss and list of outputs for each of the three views)</b> 
+      <br> <hr>
+
+      <div>
+        <H1> <u> Example Using Random Data </u> </H1> 
+        <img src="example.png"> </div>
+      <br> 
+
+    </div> 
+    </body>
+    </html>
