@@ -15,7 +15,7 @@ This project is collectively done by Kshitij Gour and Sanchit Bhat. Kindly consi
 - Scikit-image
 
 
-<b>Project Structure</b>
+<b>Project Structure:</b>
 
 This project has two major parts :
 
@@ -30,5 +30,5 @@ This project has two major parts :
   - Example_Edge_Detection_Canny.ipynb
   - Example_Edge_Features_Prewitt.ipynb
 
-<b>Edge_Features_Documentation</b> This file documents the Edge Features section.
-<b>Pixel_Features_Documentation</b> This file doocuments the Pixel Mean-Median-Mode section.
+<b>Edge_Features_Documentation -</b> This file documents the Edge Features section.
+<b>Pixel_Features_Documentation -</b> This file doocuments the Pixel Mean-Median-Mode section.
