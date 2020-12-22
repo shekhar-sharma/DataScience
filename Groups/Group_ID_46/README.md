@@ -35,4 +35,4 @@ This project has two major parts :
 <b>Pixel_Features_Documentation -</b> This file doocuments the Pixel Mean-Median-Mode section.
 
 <b>Note:</b> 
-'Edge Features' is done using two methods - Canny Algorithm and Prewitt Edge Detector. 
+'Edge Features' is done using two methods - Canny Algorithm (Works for coloured as well as grayscale images) and Prewitt Edge Detector (Works only for grayscale images). 
