@@ -1,0 +1,5 @@
+numpy==1.19.4
+pandas==1.1.5
+torch==1.7.1
+pandas==1.1.5
+cca-zoo==1.1.6
