@@ -33,7 +33,7 @@ Group_ID_24:
 Project Type: `Feature Extraction from Image` 
 
 Project Title:
-Block wise color movements
-Color Correlation
-Dual Color Correlation
+- Block wise color movements
+- Color Correlation
+- Dual Color Correlation
 
