@@ -78,16 +78,22 @@ class MCCA:
                 alpha[i][j]=sum
                 deno = (np.dot(alpha[i][j].T,alpha[i][j]))**(0.5)
                 alpha[i][j]=np.divide(alpha[i][j],float(deno))
-     
+                
+                
     #calculating weights
         weights = [[]]*views
-        for i in range(self.n_components):
-            if i==0:
-                for j in range(views):
-                    weights[j]=alpha[i][j]
-            else:
-                for j in range(views):
-                    weights[j]=np.vstack([alpha[i][j],alpha[i-1][j]])
+        for i in range(views):
+            weights[i] = alpha[:,i]
+        for i in range(views):
+            weights[i] = np.hstack(x.reshape(dimen[i],1) for x in weights[i])
+#         weights = [[]]*views
+#         for i in range(self.n_components):
+#             if i==0:
+#                 for j in range(views):
+#                     weights[j]=alpha[i][j]
+#             else:
+#                 for j in range(views):
+#                     weights[j]=np.vstack([alpha[i][j],alpha[i-1][j]])
 
         self.weights=weights
    
