@@ -21,7 +21,7 @@ This file contains the implementation of LBP in python on any image.
 Contains a sample code that returns an LBP of an image for texture classification.
 
 ## LBP.html
-
+Contains a detail web page describing the various methods and respective parameters information with examples.
 
 The following Local Derivative Pattern folder contains 4 files:
 
@@ -35,5 +35,5 @@ This file contains the implementation of LDP in python on any image.
 Contains a sample code that returns an LDP of an image for texture classification.
 
 ## LDP.html
-
+Contains a detail web page describing the various methods and respective parameters information with examples.
 
