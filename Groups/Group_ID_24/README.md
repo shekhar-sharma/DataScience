@@ -22,7 +22,7 @@ Group_ID_24:
 
 ```
 
-## Group ID: 39
+## Group ID: 24
 
 - Avaneesh Gupta   (0801CS171017)
 - Narinder Sharma  (0801CS171048)
