@@ -33,3 +33,6 @@ This project has two major parts :
 <b>Edge_Features_Documentation -</b> This file documents the Edge Features section.
 
 <b>Pixel_Features_Documentation -</b> This file doocuments the Pixel Mean-Median-Mode section.
+
+<b>Note:</b> 
+'Edge Features' is done using two methods - Canny Algorithm and Prewitt Edge Detector. 
