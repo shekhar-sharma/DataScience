@@ -8,6 +8,7 @@ Group_ID_24:
 |   |   *---Block wise color movements
 |   |   |   |---Block wise_color_movements.ipynb
 |   |   |   |---Block wise Color Moment.pdf
+|   |   |   |---README.md
 |   |   |   \---Input Image.jpeg
 |   |   |
 |   |   *---Color Correlation
