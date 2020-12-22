@@ -29,3 +29,6 @@ This project has two major parts :
   - Example_pixel_mode.ipynb
   - Example_Edge_Detection_Canny.ipynb
   - Example_Edge_Features_Prewitt.ipynb
+
+<b>Edge_Features_Documentation</b> This file documents the Edge Features section.
+<b>Pixel_Features_Documentation</b> This file doocuments the Pixel Mean-Median-Mode section.
