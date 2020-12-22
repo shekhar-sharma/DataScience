@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<head>
+	<title>MCCA</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+	<!-- jQuery library -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+	<!-- Popper JS -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+	<!-- Latest compiled JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+	
+	<body>
+		<div class="container pt-3 pb-3 border">
+
+			<div class="container bg-info text-white p-3">
+				<h2>MultiView Canonical Correlation Analysis (MCCA)</h2>
+			</div>
+			<hr>
+			<div class="container bg-light text-dark p-3">
+				class MCCA(n_components=2,reg=0.001)
+				<a href="https://github.com/shekhar-sharma/DataScience/blob/main/Groups/Group_ID_19/MCCA/MCCA.py">[Source]</a>
+			</div>
+			<hr>
+			<div>
+				<p>MCCA is a powerful technique for analyzing linear relationships between more (than two) sets of random variables.</p>
+				<p>It is an extension of CCA from two view scenario to include three or more number of data channels.</p>
+			</div>
+			<hr>
+			<div>
+				<h2>Parameters:</h2>
+				<b>n_components:</b> int, (default=2)
+				<p>number of components to keep.</p>
+				
+				<b>reg_param:</b> float, (default=0.001)
+				<p>a non-negative regularization coefficient added in case of high dimensionality features.</p>
+			</div>
+			<hr>
+			<div>
+				<h2>Attributes:</h2>
+				<p>m -> number of views</p>
+	
+				<p>n -> number of samples in each view</p>
+
+				<b>dimen:</b>  array,[m]
+		
+				<p>array of feature dimention of all views</p>
+				<b>C:</b> array,[m,m]
+				<p>Covariance matrix of each pair of views</p>
+				<b>weights:</b>  array,[m,n_components]
+				<p>array of canonical covariate or projection vectors of each view</p>
+				<b>weights_tranform:</b> array,[n,n_components]
+				<p>array that stores the transformed views by applying the fitted model on it.</p>
+				
+				<hr>		
+				
+			</div>
+			<hr>
+			<div>
+				<h2>References:</h2>
+				<p>1. The  Multiview Canonical Correlation analysis model is made from: A Survey on Canonical Correlation Analysis
+                    Xinghao Yang, Weifeng Liu, Senior Member, IEEE, Wei Liu, Member, IEEE, Dacheng Tao, Fellow, IEEE. and <br> 
+                    Multi-View Canonical Correlation Analysis
+                    Jan Rupnik (1), John Shawe-Taylor (2)
+                    (1) Jozef Stefan Institute, Jamova 39, 1000 Ljubljana, Slovenia
+                    (2) University College London, Gower Street, London WC1E 6BT, United Kingdom
+                    e-mail: jan.rupnik@ijs.si</p>
+				<p>2. To solve MEP - Multivariate Eigenvalue Problem:
+                    Algebraic Theory and Power Method
+                    Moody T. Chu
+                    and
+                    J. Loren Watterson
+                    Department of Mathematics
+                    North Carolina State University
+                    Raleigh, NC 27695-8205.</p>
+			</div>
+			<hr>
+			<div>
+				<h2>Methods:</h2>
+
+				<p><b>1.fit(X,label)</b></p>
+				<p>fit model to data</p>
+				<p><b>Parameter:</b><p>
+				<p><b>X_list:</b>  2darray, [n_sample,n_features][m]</p>
+				<p>array of m arrays of shape(n_sample,n_features)</p>
+			
+			
+
+				<p><b>2.transform(X_list)</b></p>
+				<p>apply the learned model to the data and transform it into required dimensionality form </p>
+				<p><b>Parameter:</b>2darray, [n_sample,n_features][m]</p>
+				<p><b>X_list:</b></p>
+				<p>array of m arrays of shape(n_sample,n_features)</p>
+	
+				<p><b>Returns:</b></p>
+				<p><b>X_reduced : </b> 2darray, [n_sample,n_components][m]</p>
+				<p>which is the reduced dimensionality sample  .</p>
+
+			</div>
+			<hr>
+			<div>
+				<h2>Examples:</h2>
+				<div class="container bg-light text-dark p-3">
+					<pre>MCCA import MCCA
+                        import numpy as np</pre>
+				</div>
+				<p> </p>
+				<div class="container bg-light text-dark p-3">
+					<pre>X1= np.array([[-1, -4,-5], [-25, -1,29], [-33, -24,-1], [1, 1,8], [23, 1,10]])
+                        X2 = np.array([[-1, -1,2,3], [-2,2, -1,4], [-3,4, -2,5], [1,2, 1,7], [2,3, 1,7]])
+                        X3= np.array([[-1, -1,3,2,5], [2, 3,-1,5,1], [-3, 4,2,7,4], [1, 1,3,1,3], [2, 1,3,4,-1]]) 
+                         
+                        X_list=np.array([X1,X2,X3])
+                        mcca = MCCA()
+                        mcca.fit(X_list)
+                        X_reduced = mcca.transform(X_list)</pre>
+				</div>
+				<div>
+					<pre>[[ 0.0084595  -0.12340111]
+                        [ 0.17408603  0.36491683]
+                        [-2.43317916 -2.42754556]
+                        [ 0.72955029  0.69741139]
+                        [ 1.52108335  1.48861845]]
+                       [[-0.16041427 -0.84862691]
+                        [-1.30547416 -1.25439235]
+                        [-1.77544399 -1.30992767]
+                        [ 1.43935998  1.46918355]
+                        [ 1.80197243  1.94376337]]
+                       [[-0.02106019 -0.5902939 ]
+                        [ 0.04145795  0.48426907]
+                        [-2.53588307 -2.2756193 ]
+                        [ 0.91295329  0.62291948]
+                        [ 1.60253201  1.75872465]]</pre>
+				</div>
+					
+		</div>
+	</body>
+</head>
