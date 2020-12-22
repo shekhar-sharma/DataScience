@@ -1,4 +1,6 @@
-Directory Tree
+## Directory Tree
+
+```
 Group_ID_24:
 |
 *---Resources
@@ -17,16 +19,20 @@ Group_ID_24:
 |---Group_Members.txt
 \---README.md
 
+```
 
-Group ID: 24
-Avaneesh Gupta   (0801CS171017)
-Jayant Parteti   (0801CS171030)
-Narinder Sharma  (0801CS171030)
+## Group ID: 39
+
+- Avaneesh Gupta   (0801CS171017)
+- Narinder Sharma  (0801CS171048)
+- Jayant Parteti   (0801CS171030)
 
 
-Project Type: Feature Extraction from Image
+
+Project Type: `Feature Extraction from Image` 
 
 Project Title:
 Block wise color movements
 Color Correlation
 Dual Color Correlation
+
