@@ -1,7 +1,7 @@
 Group_ID_24:
 |
 *---Resources
-|   *---Package
+|  *---Package
 |   |   *---Block wise color movements
 |   |   |   |---Block wise_color_movements.ipynb
 |   |   |   |---Block wise Color Moment.pdf
