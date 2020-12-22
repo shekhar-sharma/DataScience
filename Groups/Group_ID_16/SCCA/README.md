@@ -54,4 +54,5 @@ Y = Y - Y_mean
  - SCCA_DOCUMENTATION_CS24.pdf - It contains report of the project.
  - example_scca.ipynb - It contains example code.
  - README.md - It contains description of all the things.
+ - SCCA_Code_Documentation.html - It contains documentation of API
  
